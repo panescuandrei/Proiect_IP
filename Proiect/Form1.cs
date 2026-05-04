@@ -60,13 +60,25 @@ namespace Proiect
             
             if (_manager.IsBugActive)
             {
+                if (buttonBug.Visible == false)
+                {
+                    int maxX = this.ClientSize.Width - buttonBug.Width;
+                    int maxY = this.ClientSize.Height - buttonBug.Height;
+
+                    buttonBug.Left = _random.Next(0, Math.Max(1, maxX));
+                    buttonBug.Top = _random.Next(0, Math.Max(1, maxY));
+                }
+
                 buttonBug.Visible = true;
                 buttonBug.BringToFront(); 
                 buttonBug.Text = $"CRITICAL BUG!\nClick {Math.Max(0, _manager.BugClicksRemaining)} times to fix!";
+
+                buttonWriteCode.Enabled = false;
             }
             else
             {
                 buttonBug.Visible = false;
+                buttonWriteCode.Enabled = true;
             }
         }
 

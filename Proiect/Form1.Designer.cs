@@ -142,11 +142,11 @@
             // buttonBug
             // 
             this.buttonBug.BackColor = System.Drawing.Color.Red;
-            this.buttonBug.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonBug.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonBug.ForeColor = System.Drawing.Color.White;
-            this.buttonBug.Location = new System.Drawing.Point(186, 157);
+            this.buttonBug.Location = new System.Drawing.Point(350, 245);
             this.buttonBug.Name = "buttonBug";
-            this.buttonBug.Size = new System.Drawing.Size(358, 120);
+            this.buttonBug.Size = new System.Drawing.Size(219, 58);
             this.buttonBug.TabIndex = 8;
             this.buttonBug.Text = "BUG";
             this.buttonBug.UseVisualStyleBackColor = false;
