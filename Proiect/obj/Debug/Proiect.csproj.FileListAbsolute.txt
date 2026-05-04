@@ -1,0 +1,15 @@
+D:\1Programare\IP\Proiect\Proiect\Proiect\bin\Debug\Proiect.exe.config
+D:\1Programare\IP\Proiect\Proiect\Proiect\bin\Debug\Proiect.exe
+D:\1Programare\IP\Proiect\Proiect\Proiect\bin\Debug\Proiect.pdb
+D:\1Programare\IP\Proiect\Proiect\Proiect\obj\Debug\Proiect.csproj.AssemblyReference.cache
+D:\1Programare\IP\Proiect\Proiect\Proiect\obj\Debug\Proiect.Properties.Resources.resources
+D:\1Programare\IP\Proiect\Proiect\Proiect\obj\Debug\Proiect.csproj.GenerateResource.cache
+D:\1Programare\IP\Proiect\Proiect\Proiect\obj\Debug\Proiect.csproj.CoreCompileInputs.cache
+D:\1Programare\IP\Proiect\Proiect\Proiect\obj\Debug\Proiect.exe
+D:\1Programare\IP\Proiect\Proiect\Proiect\obj\Debug\Proiect.pdb
+D:\1Programare\IP\Proiect\Proiect\Proiect\bin\Debug\DevTycoon.Engine.dll
+D:\1Programare\IP\Proiect\Proiect\Proiect\bin\Debug\DevTycoon.Engine.pdb
+D:\1Programare\IP\Proiect\Proiect\Proiect\bin\Debug\DevTycoon.Patterns.pdb
+D:\1Programare\IP\Proiect\Proiect\Proiect\obj\Debug\Proiect.Form1.resources
+D:\1Programare\IP\Proiect\Proiect\Proiect\obj\Debug\Proiect.csproj.Up2Date
+D:\1Programare\IP\Proiect\Proiect\Proiect\bin\Debug\DevTycoon.Patterns.dll

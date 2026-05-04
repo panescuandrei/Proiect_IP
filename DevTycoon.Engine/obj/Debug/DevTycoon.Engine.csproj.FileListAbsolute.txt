@@ -1,0 +1,9 @@
+D:\1Programare\IP\Proiect\Proiect\DevTycoon.Engine\bin\Debug\DevTycoon.Engine.dll
+D:\1Programare\IP\Proiect\Proiect\DevTycoon.Engine\bin\Debug\DevTycoon.Engine.pdb
+D:\1Programare\IP\Proiect\Proiect\DevTycoon.Engine\obj\Debug\DevTycoon.Engine.csproj.AssemblyReference.cache
+D:\1Programare\IP\Proiect\Proiect\DevTycoon.Engine\obj\Debug\DevTycoon.Engine.csproj.CoreCompileInputs.cache
+D:\1Programare\IP\Proiect\Proiect\DevTycoon.Engine\obj\Debug\DevTycoon.Engine.dll
+D:\1Programare\IP\Proiect\Proiect\DevTycoon.Engine\obj\Debug\DevTycoon.Engine.pdb
+D:\1Programare\IP\Proiect\Proiect\DevTycoon.Engine\bin\Debug\DevTycoon.Patterns.dll
+D:\1Programare\IP\Proiect\Proiect\DevTycoon.Engine\bin\Debug\DevTycoon.Patterns.pdb
+D:\1Programare\IP\Proiect\Proiect\DevTycoon.Engine\obj\Debug\DevTycoo.FCE2E60F.Up2Date

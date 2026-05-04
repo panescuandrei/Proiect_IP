@@ -1,0 +1,244 @@
+﻿using DevTycoon.Engine;
+using DevTycoon.Patterns;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Proiect
+{
+    public partial class Form1 : Form
+    {
+        private GameManager _manager;
+        private List<Label> _floatingTexts = new List<Label>();
+        private Random _random = new Random();
+
+        public Form1()
+        {
+            InitializeComponent();
+            DoubleBuffered = true;
+            _manager = new GameManager();
+            UpdateUI();
+        }
+
+        private void UpdateUI()
+        {
+            double currentCps = _manager.GetTotalCPS();
+
+            labelLinesOfCode.Text = $"Lines of Code: {_manager.LinesOfCode.ToString("F1")}\nTeam Size: {_manager.Team.Count}\nCode Per Second: {currentCps.ToString("F1")}";
+
+
+            double juniorCost = _manager.GetNextCost("junior");
+            buttonHireJunior.Text = $"Hire Junior Dev (Cost: {Math.Ceiling(juniorCost)})";
+            UpdateButtonVisuals(buttonHireJunior, juniorCost);
+
+            double seniorCost = _manager.GetNextCost("senior");
+            buttonHireSenior.Text = $"Hire Senior Dev (Cost: {Math.Ceiling(seniorCost)})";
+            UpdateButtonVisuals(buttonHireSenior, seniorCost);
+
+            if (_manager.HasMechanicalKeyboard)
+            {
+                buttonBuyKeyboard.Text = "Mechanical Keyboard (Owned)";
+                buttonBuyKeyboard.BackColor = Color.LightGreen;
+                buttonBuyKeyboard.ForeColor = Color.Black;
+                buttonBuyKeyboard.Enabled = false; 
+            }
+            else
+            {
+                buttonBuyKeyboard.Text = "Buy Mechanical Keyboard (Cost: 250)";
+                UpdateButtonVisuals(buttonBuyKeyboard, 250);
+            }
+
+            buttonReleaseVersion.Text = $"Release v{_manager.CurrentVersion + 1}.0 (Cost: {_manager.NextVersionCost})";
+            UpdateButtonVisuals(buttonReleaseVersion, _manager.NextVersionCost);
+
+            
+            if (_manager.IsBugActive)
+            {
+                buttonBug.Visible = true;
+                buttonBug.BringToFront(); 
+                buttonBug.Text = $"CRITICAL BUG!\nClick {Math.Max(0, _manager.BugClicksRemaining)} times to fix!";
+            }
+            else
+            {
+                buttonBug.Visible = false;
+            }
+        }
+
+        private void UpdateButtonVisuals(Button btn, double cost)
+        {
+            if (_manager.LinesOfCode >= cost)
+            {
+                btn.BackColor = SystemColors.Control;
+                btn.ForeColor = SystemColors.ControlText;
+            }
+            else
+            {
+                btn.BackColor = Color.LightGray;
+                btn.ForeColor = Color.DimGray;
+            }
+        }
+
+        private void buttonWriteCode_Click(object sender, EventArgs e)
+        {
+            _manager.WriteCode();
+            UpdateUI();
+
+            if (_manager.HasMechanicalKeyboard)
+            {
+                SpawnFloatingText("+2");
+            }
+            else
+            {
+                SpawnFloatingText("+1");
+            }
+        }
+
+        private void buttonHireJunior_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _manager.BuyEmployee("junior");
+                UpdateUI();
+            }
+            catch (NotEnoughCodeException ex)
+            {
+                MessageBox.Show(ex.Message, "Not Enough Code!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void buttonHireSenior_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _manager.BuyEmployee("senior");
+                UpdateUI();
+            }
+            catch (NotEnoughCodeException ex)
+            {
+                MessageBox.Show(ex.Message, "Not Enough Code!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void gameTimer_Tick(object sender, EventArgs e)
+        {
+            if (!_manager.IsBugActive && _random.Next(0, 100) < 5)
+            {
+                _manager.TriggerBug();
+            }
+
+            _manager.GeneratePassiveCode();
+            UpdateUI();
+        }
+
+        private void SpawnFloatingText(string text)
+        {
+            Label floatLabel = new Label();
+            floatLabel.Text = text;
+            floatLabel.ForeColor = Color.Green; 
+            floatLabel.Font = new Font("Consolas", 14, FontStyle.Bold); 
+            floatLabel.AutoSize = true;
+            floatLabel.BackColor = Color.Transparent;
+
+            floatLabel.Top = buttonWriteCode.Top - 30 + _random.Next(-10, 10);
+
+            
+            floatLabel.Left = buttonWriteCode.Left + _random.Next(0, buttonWriteCode.Width);
+
+            this.Controls.Add(floatLabel);
+            floatLabel.BringToFront();
+            _floatingTexts.Add(floatLabel);
+        }
+
+        private void animationTimer_Tick(object sender, EventArgs e)
+        {
+            
+            for (int i = _floatingTexts.Count - 1; i >= 0; i--)
+            {
+                Label lbl = _floatingTexts[i];
+                lbl.Top -= 3; 
+
+                
+                if (lbl.Top < buttonWriteCode.Top - 50)
+                {
+                    this.Controls.Remove(lbl);
+                    _floatingTexts.RemoveAt(i);
+                    lbl.Dispose(); 
+                }
+            }
+        }
+
+        private void labelLinesOfCode_Click(object sender, EventArgs e)
+        {
+            
+            if (_manager.Team.Count == 0)
+            {
+                MessageBox.Show("You haven't hired anyone yet! Start clicking!", "Team Roster", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return; 
+            }
+
+            
+            int juniors = 0;
+            int seniors = 0;
+
+            
+            foreach (IEmployee employee in _manager.Team)
+            {
+                if (employee.Name == "Junior Developer")
+                {
+                    juniors++;
+                }
+                else if (employee.Name == "Senior Developer")
+                {
+                    seniors++;
+                }
+            }
+
+            
+            string rosterMessage = "Current Dev Team:\n\n";
+            rosterMessage += $"- Junior Developers: {juniors}\n";
+            rosterMessage += $"- Senior Developers: {seniors}";
+
+            
+            MessageBox.Show(rosterMessage, "Team Roster", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void buttonBuyKeyboard_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _manager.BuyMechanicalKeyboard();
+                UpdateUI();
+            }
+            catch (NotEnoughCodeException ex)
+            {
+                MessageBox.Show(ex.Message, "Not Enough Code!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void buttonReleaseVersion_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _manager.ReleaseVersion();
+                UpdateUI();
+                MessageBox.Show($"Congratulations! You successfully released Version {_manager.CurrentVersion}.0!", "Launch Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (NotEnoughCodeException ex)
+            {
+                MessageBox.Show(ex.Message, "Not Ready For Release!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void buttonBug_Click(object sender, EventArgs e)
+        {
+            _manager.SquashBug();
+            UpdateUI();
+        }
+    }
+}
