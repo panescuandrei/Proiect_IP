@@ -130,6 +130,45 @@ namespace DevTycoon.Engine
             HasMechanicalKeyboard = true;
         }
 
+        public GameSaveData CreateSaveData()
+        {
+            return new GameSaveData
+            {
+                LinesOfCode = LinesOfCode,
+                HasMechanicalKeyboard = HasMechanicalKeyboard,
+                IsBugActive = IsBugActive,
+                BugClicksRemaining = BugClicksRemaining,
+                CurrentVersion = CurrentVersion,
+                JuniorCount = Team.Count(e => e.Name == "Junior Developer"),
+                SeniorCount = Team.Count(e => e.Name == "Senior Developer")
+            };
+        }
+
+        public void LoadSaveData(GameSaveData data)
+        {
+            if (data == null)
+            {
+                throw new ArgumentNullException(nameof(data));
+            }
+
+            LinesOfCode = Math.Max(0, data.LinesOfCode);
+            HasMechanicalKeyboard = data.HasMechanicalKeyboard;
+            CurrentVersion = Math.Max(0, data.CurrentVersion);
+            IsBugActive = data.IsBugActive;
+            BugClicksRemaining = data.IsBugActive ? Math.Max(1, data.BugClicksRemaining) : 0;
+
+            Team.Clear();
+
+            for (int i = 0; i < Math.Max(0, data.JuniorCount); i++)
+            {
+                Team.Add(EmployeeFactory.CreateEmployee("junior"));
+            }
+
+            for (int i = 0; i < Math.Max(0, data.SeniorCount); i++)
+            {
+                Team.Add(EmployeeFactory.CreateEmployee("senior"));
+            }
+        }
 
     }
 }

@@ -16,3 +16,12 @@ D:\1Programare\IP\Proiect_IP_Github\Proiect_IP\DevTycoon.Engine\obj\Debug\DevTyc
 D:\1Programare\IP\Proiect_IP_Github\Proiect_IP\DevTycoon.Engine\bin\Debug\DevTycoon.Engine.dll
 D:\1Programare\IP\Proiect_IP_Github\Proiect_IP\DevTycoon.Engine\bin\Debug\DevTycoon.Engine.pdb
 D:\1Programare\IP\Proiect_IP_Github\Proiect_IP\DevTycoon.Engine\obj\Debug\DevTycoo.FCE2E60F.Up2Date
+C:\Users\codri\source\repos\Proiect_IP\DevTycoon.Engine\bin\Debug\DevTycoon.Engine.dll
+C:\Users\codri\source\repos\Proiect_IP\DevTycoon.Engine\bin\Debug\DevTycoon.Engine.pdb
+C:\Users\codri\source\repos\Proiect_IP\DevTycoon.Engine\bin\Debug\DevTycoon.Patterns.dll
+C:\Users\codri\source\repos\Proiect_IP\DevTycoon.Engine\bin\Debug\DevTycoon.Patterns.pdb
+C:\Users\codri\source\repos\Proiect_IP\DevTycoon.Engine\obj\Debug\DevTycoon.Engine.csproj.AssemblyReference.cache
+C:\Users\codri\source\repos\Proiect_IP\DevTycoon.Engine\obj\Debug\DevTycoon.Engine.csproj.CoreCompileInputs.cache
+C:\Users\codri\source\repos\Proiect_IP\DevTycoon.Engine\obj\Debug\DevTycoo.FCE2E60F.Up2Date
+C:\Users\codri\source\repos\Proiect_IP\DevTycoon.Engine\obj\Debug\DevTycoon.Engine.dll
+C:\Users\codri\source\repos\Proiect_IP\DevTycoon.Engine\obj\Debug\DevTycoon.Engine.pdb

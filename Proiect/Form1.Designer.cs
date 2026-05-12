@@ -41,6 +41,8 @@
             this.labelTeam = new System.Windows.Forms.Label();
             this.buttonReleaseVersion = new System.Windows.Forms.Button();
             this.buttonBug = new System.Windows.Forms.Button();
+            this.buttonSaveGame = new System.Windows.Forms.Button();
+            this.buttonLoadGame = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelLinesOfCode
@@ -50,7 +52,7 @@
             this.labelLinesOfCode.Font = new System.Drawing.Font("Consolas", 11.78182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelLinesOfCode.Location = new System.Drawing.Point(271, 74);
             this.labelLinesOfCode.Name = "labelLinesOfCode";
-            this.labelLinesOfCode.Size = new System.Drawing.Size(170, 22);
+            this.labelLinesOfCode.Size = new System.Drawing.Size(153, 19);
             this.labelLinesOfCode.TabIndex = 0;
             this.labelLinesOfCode.Text = "Lines of Code: 0";
             this.labelLinesOfCode.Click += new System.EventHandler(this.labelLinesOfCode_Click);
@@ -122,7 +124,7 @@
             this.labelPermanent.Font = new System.Drawing.Font("Consolas", 15.70909F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelPermanent.Location = new System.Drawing.Point(95, 207);
             this.labelPermanent.Name = "labelPermanent";
-            this.labelPermanent.Size = new System.Drawing.Size(246, 28);
+            this.labelPermanent.Size = new System.Drawing.Size(226, 24);
             this.labelPermanent.TabIndex = 5;
             this.labelPermanent.Text = "Permanent Upgrades";
             // 
@@ -132,7 +134,7 @@
             this.labelTeam.Font = new System.Drawing.Font("Consolas", 15.70909F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelTeam.Location = new System.Drawing.Point(539, 207);
             this.labelTeam.Name = "labelTeam";
-            this.labelTeam.Size = new System.Drawing.Size(181, 28);
+            this.labelTeam.Size = new System.Drawing.Size(166, 24);
             this.labelTeam.TabIndex = 6;
             this.labelTeam.Text = "Team Upgrades";
             // 
@@ -165,13 +167,35 @@
             this.buttonBug.Visible = false;
             this.buttonBug.Click += new System.EventHandler(this.buttonBug_Click);
             // 
+            // buttonSaveGame
+            // 
+            this.buttonSaveGame.Location = new System.Drawing.Point(543, 570);
+            this.buttonSaveGame.Name = "buttonSaveGame";
+            this.buttonSaveGame.Size = new System.Drawing.Size(93, 23);
+            this.buttonSaveGame.TabIndex = 9;
+            this.buttonSaveGame.Text = "Save Game";
+            this.buttonSaveGame.UseVisualStyleBackColor = true;
+            this.buttonSaveGame.Click += new System.EventHandler(this.buttonSaveGame_Click_1);
+            // 
+            // buttonLoadGame
+            // 
+            this.buttonLoadGame.Location = new System.Drawing.Point(674, 570);
+            this.buttonLoadGame.Name = "buttonLoadGame";
+            this.buttonLoadGame.Size = new System.Drawing.Size(100, 23);
+            this.buttonLoadGame.TabIndex = 10;
+            this.buttonLoadGame.Text = "Load Game";
+            this.buttonLoadGame.UseVisualStyleBackColor = true;
+            this.buttonLoadGame.Click += new System.EventHandler(this.buttonLoadGame_Click_1);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(5F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(13)))), ((int)(((byte)(6)))));
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(798, 635);
+            this.Controls.Add(this.buttonLoadGame);
+            this.Controls.Add(this.buttonSaveGame);
             this.Controls.Add(this.buttonBug);
             this.Controls.Add(this.buttonReleaseVersion);
             this.Controls.Add(this.labelTeam);
@@ -186,6 +210,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Code Clicker";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -204,6 +229,8 @@
         private System.Windows.Forms.Label labelTeam;
         private System.Windows.Forms.Button buttonReleaseVersion;
         private System.Windows.Forms.Button buttonBug;
+        private System.Windows.Forms.Button buttonSaveGame;
+        private System.Windows.Forms.Button buttonLoadGame;
     }
 }
 
