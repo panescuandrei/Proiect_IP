@@ -30,7 +30,7 @@ namespace Proiect
             InitializeComponent();
             DoubleBuffered = true;
 
-            _manager = new GameManager();
+            _manager = GameManager.Instance;
 
             _upgradeButtons = new Dictionary<string, Button>
             {

@@ -10,7 +10,17 @@ namespace DevTycoon.Engine
 {
     public class GameManager
     {
-
+        // Singleton
+        private static GameManager _instance;
+        public static GameManager Instance
+        {
+            get
+            {
+                if (_instance == null)
+                    _instance = new GameManager();
+                return _instance;
+            }
+        }
         public double LinesOfCode { get; private set; }
         public double TotalLinesOfCode { get; private set; }
 
@@ -34,7 +44,8 @@ namespace DevTycoon.Engine
             BugClicksRemaining = Math.Max(1, BugClicksRemaining - amount);
         }
 
-        public GameManager()
+        // a devenit singleton
+        private GameManager()
         {            
             LinesOfCode = 0;
             TotalLinesOfCode = 0;
@@ -159,19 +170,6 @@ namespace DevTycoon.Engine
 
             LinesOfCode -= actualCost;
             Team.Add(EmployeeFactory.CreateEmployee(employeeType));
-        }
-
-        public void BuyMechanicalKeyboard()
-        {
-            if (HasMechanicalKeyboard) return;
-
-            if (LinesOfCode < 250)
-            {
-                throw new NotEnoughCodeException("You need 250 lines of code to buy the Mechanical Keyboard.");
-            }
-
-            LinesOfCode -= 250;
-            HasMechanicalKeyboard = true;
         }
 
         public GameSaveData CreateSaveData()
