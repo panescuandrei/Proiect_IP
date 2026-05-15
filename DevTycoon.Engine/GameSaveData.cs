@@ -9,6 +9,9 @@ namespace DevTycoon.Engine
         public double LinesOfCode { get; set; }
 
         [DataMember]
+        public double TotalLinesOfCode { get; set; }
+
+        [DataMember]
         public bool HasMechanicalKeyboard { get; set; }
 
         [DataMember]

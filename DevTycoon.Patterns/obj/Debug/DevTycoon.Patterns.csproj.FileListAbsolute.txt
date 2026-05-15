@@ -25,3 +25,12 @@ C:\Users\codri\source\repos\Proiect_IP\DevTycoon.Patterns\obj\Debug\DevTycoon.Pa
 C:\Users\codri\source\repos\Proiect_IP\DevTycoon.Patterns\obj\Debug\DevTycoo.026B153D.Up2Date
 C:\Users\codri\source\repos\Proiect_IP\DevTycoon.Patterns\obj\Debug\DevTycoon.Patterns.dll
 C:\Users\codri\source\repos\Proiect_IP\DevTycoon.Patterns\obj\Debug\DevTycoon.Patterns.pdb
+D:\PERSONAL\IP\PrjIP\DevTycoon.Patterns\bin\Debug\DevTycoon.Patterns.dll
+D:\PERSONAL\IP\PrjIP\DevTycoon.Patterns\bin\Debug\DevTycoon.Patterns.pdb
+D:\PERSONAL\IP\PrjIP\DevTycoon.Patterns\bin\Debug\DevTycoon.Engine.dll
+D:\PERSONAL\IP\PrjIP\DevTycoon.Patterns\bin\Debug\DevTycoon.Engine.pdb
+D:\PERSONAL\IP\PrjIP\DevTycoon.Patterns\obj\Debug\DevTycoon.Patterns.csproj.AssemblyReference.cache
+D:\PERSONAL\IP\PrjIP\DevTycoon.Patterns\obj\Debug\DevTycoon.Patterns.csproj.CoreCompileInputs.cache
+D:\PERSONAL\IP\PrjIP\DevTycoon.Patterns\obj\Debug\DevTycoo.026B153D.Up2Date
+D:\PERSONAL\IP\PrjIP\DevTycoon.Patterns\obj\Debug\DevTycoon.Patterns.dll
+D:\PERSONAL\IP\PrjIP\DevTycoon.Patterns\obj\Debug\DevTycoon.Patterns.pdb

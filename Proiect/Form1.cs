@@ -45,7 +45,29 @@ namespace Proiect
 
 
             double juniorCost = _manager.GetNextCost("junior");
-            buttonHireJunior.Text = $"Hire Junior Dev (Cost: {Math.Ceiling(juniorCost)})";
+            if(_manager.TotalLinesOfCode < 40)
+            {
+                labelTeam.Visible = false;
+                buttonHireJunior.Visible = false;
+
+                labelPermanent.Visible = false;
+                buttonBuyKeyboard.Visible = false;
+            }
+            else
+            {
+                buttonHireJunior.Visible = true;
+                labelTeam.Visible = true;
+
+                labelPermanent.Visible = true;
+                buttonBuyKeyboard.Visible = true;
+            }
+
+            if (_manager.TotalLinesOfCode < 100)
+                buttonHireSenior.Visible = false;
+            else
+                buttonHireSenior.Visible = true;
+
+                buttonHireJunior.Text = $"Hire Junior Dev (Cost: {Math.Ceiling(juniorCost)})";
             UpdateButtonVisuals(buttonHireJunior, juniorCost);
 
             double seniorCost = _manager.GetNextCost("senior");

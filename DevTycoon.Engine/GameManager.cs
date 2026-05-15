@@ -11,6 +11,7 @@ namespace DevTycoon.Engine
     {
 
         public double LinesOfCode { get; private set; }
+        public double TotalLinesOfCode { get; private set; }
 
         public List<IEmployee> Team { get; private set; }
 
@@ -23,6 +24,7 @@ namespace DevTycoon.Engine
         public GameManager()
         {            
             LinesOfCode = 0;
+            TotalLinesOfCode = 0;
             Team = new List<IEmployee>();
             HasMechanicalKeyboard = false;
         }
@@ -32,10 +34,12 @@ namespace DevTycoon.Engine
             if (HasMechanicalKeyboard)
             {
                 LinesOfCode += 2.0;
+                TotalLinesOfCode += 2.0;
             }
             else
             {
                 LinesOfCode += 1.0;
+                TotalLinesOfCode += 1.0;
             }
         }
 
@@ -46,6 +50,7 @@ namespace DevTycoon.Engine
             foreach (IEmployee employee in Team)
             {
                 LinesOfCode += employee.CodePerSecond;
+                TotalLinesOfCode += employee.CodePerSecond;
             }
         }
 
@@ -136,6 +141,7 @@ namespace DevTycoon.Engine
             {
                 LinesOfCode = LinesOfCode,
                 HasMechanicalKeyboard = HasMechanicalKeyboard,
+                TotalLinesOfCode = TotalLinesOfCode,
                 IsBugActive = IsBugActive,
                 BugClicksRemaining = BugClicksRemaining,
                 CurrentVersion = CurrentVersion,
@@ -152,6 +158,7 @@ namespace DevTycoon.Engine
             }
 
             LinesOfCode = Math.Max(0, data.LinesOfCode);
+            TotalLinesOfCode = Math.Max(0, data.TotalLinesOfCode);
             HasMechanicalKeyboard = data.HasMechanicalKeyboard;
             CurrentVersion = Math.Max(0, data.CurrentVersion);
             IsBugActive = data.IsBugActive;

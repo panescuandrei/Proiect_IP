@@ -25,3 +25,12 @@ C:\Users\codri\source\repos\Proiect_IP\DevTycoon.Engine\obj\Debug\DevTycoon.Engi
 C:\Users\codri\source\repos\Proiect_IP\DevTycoon.Engine\obj\Debug\DevTycoo.FCE2E60F.Up2Date
 C:\Users\codri\source\repos\Proiect_IP\DevTycoon.Engine\obj\Debug\DevTycoon.Engine.dll
 C:\Users\codri\source\repos\Proiect_IP\DevTycoon.Engine\obj\Debug\DevTycoon.Engine.pdb
+D:\PERSONAL\IP\PrjIP\DevTycoon.Engine\bin\Debug\DevTycoon.Engine.dll
+D:\PERSONAL\IP\PrjIP\DevTycoon.Engine\bin\Debug\DevTycoon.Engine.pdb
+D:\PERSONAL\IP\PrjIP\DevTycoon.Engine\bin\Debug\DevTycoon.Patterns.dll
+D:\PERSONAL\IP\PrjIP\DevTycoon.Engine\bin\Debug\DevTycoon.Patterns.pdb
+D:\PERSONAL\IP\PrjIP\DevTycoon.Engine\obj\Debug\DevTycoon.Engine.csproj.AssemblyReference.cache
+D:\PERSONAL\IP\PrjIP\DevTycoon.Engine\obj\Debug\DevTycoon.Engine.csproj.CoreCompileInputs.cache
+D:\PERSONAL\IP\PrjIP\DevTycoon.Engine\obj\Debug\DevTycoo.FCE2E60F.Up2Date
+D:\PERSONAL\IP\PrjIP\DevTycoon.Engine\obj\Debug\DevTycoon.Engine.dll
+D:\PERSONAL\IP\PrjIP\DevTycoon.Engine\obj\Debug\DevTycoon.Engine.pdb
