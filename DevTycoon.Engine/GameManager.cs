@@ -1,9 +1,10 @@
-﻿using System;
+﻿using DevTycoon.Engine.Upgrades;
+using DevTycoon.Patterns;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DevTycoon.Patterns;
 
 namespace DevTycoon.Engine
 {
@@ -15,11 +16,15 @@ namespace DevTycoon.Engine
 
         public List<IEmployee> Team { get; private set; }
 
-        public bool HasMechanicalKeyboard { get; private set; }
+        public bool HasMechanicalKeyboard { get; internal set; }
         public bool IsBugActive { get; private set; }
         public int BugClicksRemaining { get; private set; }
         public int CurrentVersion { get; private set; } = 0;
         public double NextVersionCost => 10000.0 * Math.Pow(2, CurrentVersion); // 10k, dupa 20k, 30k etc.
+
+        // Observer Design patter, pt upgrades
+        public List<IUpgrade> Upgrades { get; private set; }
+        public int BonusCodePerClick { get; set; } = 0;  // pentru DualMonitor etc.
 
         public GameManager()
         {            
@@ -27,20 +32,26 @@ namespace DevTycoon.Engine
             TotalLinesOfCode = 0;
             Team = new List<IEmployee>();
             HasMechanicalKeyboard = false;
+
+            Upgrades = new List<IUpgrade>
+                {
+                    new MechanicalKeyboardUpgrade(),
+                    new DualMonitorUpgrade()
+                };
+
+        }
+
+        public void SpendCode(double amount)
+        {
+            LinesOfCode -= amount;
         }
 
         public void WriteCode()
         {
-            if (HasMechanicalKeyboard)
-            {
-                LinesOfCode += 2.0;
-                TotalLinesOfCode += 2.0;
-            }
-            else
-            {
-                LinesOfCode += 1.0;
-                TotalLinesOfCode += 1.0;
-            }
+            double amount = HasMechanicalKeyboard ? 2.0 : 1.0;
+            amount += BonusCodePerClick;  // bonus de la DualMonitor etc.
+            LinesOfCode += amount;
+            TotalLinesOfCode += amount;
         }
 
         public void GeneratePassiveCode()
@@ -52,6 +63,9 @@ namespace DevTycoon.Engine
                 LinesOfCode += employee.CodePerSecond;
                 TotalLinesOfCode += employee.CodePerSecond;
             }
+
+            foreach (var upgrade in Upgrades)
+                upgrade.OnGameStateChanged(this);
         }
 
         public void TriggerBug()

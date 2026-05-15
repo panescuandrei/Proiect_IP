@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EmployeeFactory.cs" />
+    <Compile Include="IUpgradeObserver.cs" />
     <Compile Include="JuniorDev.cs" />
     <Compile Include="IEmployee.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

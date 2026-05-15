@@ -4,9 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using DevTycoon.Patterns;
+
 namespace DevTycoon.Engine
 {
-    internal class Upgrade
+    public interface IUpgrade : IUpgradeObserver
     {
+        string Name { get; }
+        double Cost { get; }
+        bool IsUnlocked { get; }
+        bool IsPurchased { get; }
+        void Purchase(GameManager manager);
     }
 }

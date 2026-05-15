@@ -255,14 +255,17 @@ namespace Proiect
 
         private void buttonBuyKeyboard_Click(object sender, EventArgs e)
         {
+            var upgrade = _manager.Upgrades
+                .FirstOrDefault(u => u.Name == "Mechanical Keyboard");
             try
             {
-                _manager.BuyMechanicalKeyboard();
+                upgrade?.Purchase(_manager);
                 UpdateUI();
             }
             catch (NotEnoughCodeException ex)
             {
-                MessageBox.Show(ex.Message, "Not Enough Code!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(ex.Message, "Not Enough Code!",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
