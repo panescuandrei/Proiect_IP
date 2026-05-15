@@ -12,15 +12,29 @@ namespace DevTycoon.Patterns
         {
             switch (type.ToLower())
             {
+                case "intern":
+                    return new InternDev();
+
                 case "junior":
                     return new JuniorDev();
 
                 case "senior": 
                     return new SeniorDev();
-                //alte upgrade mai incolo
+
+                case "sysarchitect":
+                    return new SysArchiDev();
                 default:
                     throw new ArgumentException("Unknown employee type.");
             }
+
+        }
+        public static double GetUnlockAt(string type)
+        {
+            return CreateEmployee(type).UnlockAt;
+        }
+        public static string GetDisplayName(string type)
+        {
+            return CreateEmployee(type).Name;
         }
     }
 }

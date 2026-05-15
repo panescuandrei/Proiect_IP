@@ -15,6 +15,15 @@ namespace DevTycoon.Engine
         public bool HasMechanicalKeyboard { get; set; }
 
         [DataMember]
+        public bool HasDualMonitor { get; set; }
+
+        [DataMember]
+        public bool HasPipeline { get; set; }
+
+        [DataMember]
+        public bool HasEspressoMachine { get; set; }
+
+        [DataMember]
         public bool IsBugActive { get; set; }
 
         [DataMember]
@@ -24,9 +33,15 @@ namespace DevTycoon.Engine
         public int CurrentVersion { get; set; }
 
         [DataMember]
+        public int InternCount { get; set; }
+
+        [DataMember]
         public int JuniorCount { get; set; }
 
         [DataMember]
         public int SeniorCount { get; set; }
+
+        [DataMember]
+        public int SysArchiCount { get; set; }
     }
 }

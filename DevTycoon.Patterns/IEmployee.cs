@@ -11,5 +11,6 @@ namespace DevTycoon.Patterns
         string Name { get; }
         double BaseCost { get; }
         double CodePerSecond { get; }
+        double UnlockAt { get; }
     }
 }

@@ -46,6 +46,8 @@
             this.buttonBuyDualMonitor = new System.Windows.Forms.Button();
             this.buttonBuyAutomatedPipeline = new System.Windows.Forms.Button();
             this.buttonBuyEspressoMachine = new System.Windows.Forms.Button();
+            this.buttonHireIntern = new System.Windows.Forms.Button();
+            this.buttonHireArchi = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelLinesOfCode
@@ -78,9 +80,9 @@
             // 
             this.buttonHireJunior.BackColor = System.Drawing.Color.Transparent;
             this.buttonHireJunior.Font = new System.Drawing.Font("Consolas", 13.74545F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonHireJunior.Location = new System.Drawing.Point(532, 254);
+            this.buttonHireJunior.Location = new System.Drawing.Point(490, 340);
             this.buttonHireJunior.Name = "buttonHireJunior";
-            this.buttonHireJunior.Size = new System.Drawing.Size(199, 62);
+            this.buttonHireJunior.Size = new System.Drawing.Size(252, 62);
             this.buttonHireJunior.TabIndex = 2;
             this.buttonHireJunior.Text = "Hire Junior Dev (Cost: 50)";
             this.buttonHireJunior.UseVisualStyleBackColor = false;
@@ -96,9 +98,9 @@
             // 
             this.buttonHireSenior.BackColor = System.Drawing.Color.Transparent;
             this.buttonHireSenior.Font = new System.Drawing.Font("Consolas", 13.74545F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonHireSenior.Location = new System.Drawing.Point(532, 340);
+            this.buttonHireSenior.Location = new System.Drawing.Point(490, 426);
             this.buttonHireSenior.Name = "buttonHireSenior";
-            this.buttonHireSenior.Size = new System.Drawing.Size(199, 62);
+            this.buttonHireSenior.Size = new System.Drawing.Size(252, 62);
             this.buttonHireSenior.TabIndex = 3;
             this.buttonHireSenior.Text = "Hire Senior Dev (Cost: 500)";
             this.buttonHireSenior.UseVisualStyleBackColor = false;
@@ -135,7 +137,7 @@
             // 
             this.labelTeam.AutoSize = true;
             this.labelTeam.Font = new System.Drawing.Font("Consolas", 15.70909F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelTeam.Location = new System.Drawing.Point(539, 207);
+            this.labelTeam.Location = new System.Drawing.Point(531, 211);
             this.labelTeam.Name = "labelTeam";
             this.labelTeam.Size = new System.Drawing.Size(166, 24);
             this.labelTeam.TabIndex = 6;
@@ -172,7 +174,7 @@
             // 
             // buttonSaveGame
             // 
-            this.buttonSaveGame.Location = new System.Drawing.Point(543, 570);
+            this.buttonSaveGame.Location = new System.Drawing.Point(543, 599);
             this.buttonSaveGame.Name = "buttonSaveGame";
             this.buttonSaveGame.Size = new System.Drawing.Size(93, 23);
             this.buttonSaveGame.TabIndex = 9;
@@ -182,7 +184,7 @@
             // 
             // buttonLoadGame
             // 
-            this.buttonLoadGame.Location = new System.Drawing.Point(674, 570);
+            this.buttonLoadGame.Location = new System.Drawing.Point(673, 599);
             this.buttonLoadGame.Name = "buttonLoadGame";
             this.buttonLoadGame.Size = new System.Drawing.Size(100, 23);
             this.buttonLoadGame.TabIndex = 10;
@@ -226,6 +228,30 @@
             this.buttonBuyEspressoMachine.UseVisualStyleBackColor = false;
             this.buttonBuyEspressoMachine.Click += new System.EventHandler(this.buttonBuyEspressoMachine_Click);
             // 
+            // buttonHireIntern
+            // 
+            this.buttonHireIntern.BackColor = System.Drawing.Color.Transparent;
+            this.buttonHireIntern.Font = new System.Drawing.Font("Consolas", 13.74545F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonHireIntern.Location = new System.Drawing.Point(490, 254);
+            this.buttonHireIntern.Name = "buttonHireIntern";
+            this.buttonHireIntern.Size = new System.Drawing.Size(252, 62);
+            this.buttonHireIntern.TabIndex = 14;
+            this.buttonHireIntern.Text = "Hire intern (Cost: 15)";
+            this.buttonHireIntern.UseVisualStyleBackColor = false;
+            this.buttonHireIntern.Click += new System.EventHandler(this.buttonHireIntern_Click);
+            // 
+            // buttonHireArchi
+            // 
+            this.buttonHireArchi.BackColor = System.Drawing.Color.Transparent;
+            this.buttonHireArchi.Font = new System.Drawing.Font("Consolas", 13.74545F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonHireArchi.Location = new System.Drawing.Point(490, 513);
+            this.buttonHireArchi.Name = "buttonHireArchi";
+            this.buttonHireArchi.Size = new System.Drawing.Size(252, 62);
+            this.buttonHireArchi.TabIndex = 15;
+            this.buttonHireArchi.Text = "Hire System Architect (Cost: 500)";
+            this.buttonHireArchi.UseVisualStyleBackColor = false;
+            this.buttonHireArchi.Click += new System.EventHandler(this.buttonHireArchi_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(5F, 12F);
@@ -233,6 +259,8 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(13)))), ((int)(((byte)(6)))));
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(798, 635);
+            this.Controls.Add(this.buttonHireArchi);
+            this.Controls.Add(this.buttonHireIntern);
             this.Controls.Add(this.buttonBuyEspressoMachine);
             this.Controls.Add(this.buttonBuyAutomatedPipeline);
             this.Controls.Add(this.buttonBuyDualMonitor);
@@ -276,6 +304,8 @@
         private System.Windows.Forms.Button buttonBuyDualMonitor;
         private System.Windows.Forms.Button buttonBuyAutomatedPipeline;
         private System.Windows.Forms.Button buttonBuyEspressoMachine;
+        private System.Windows.Forms.Button buttonHireIntern;
+        private System.Windows.Forms.Button buttonHireArchi;
     }
 }
 

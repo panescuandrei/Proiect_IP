@@ -50,9 +50,13 @@ namespace DevTycoon.Engine
             LinesOfCode = 0;
             TotalLinesOfCode = 0;
             Team = new List<IEmployee>();
-            HasMechanicalKeyboard = false;
 
-            Upgrades = new List<IUpgrade>
+            HasMechanicalKeyboard = false;
+            HasDualMonitor = false;
+            HasPipeline = false;
+            HasEspressoMachine = false;
+
+            Upgrades = new List<IUpgrade> // perma upgrades
                 {
                     new MechanicalKeyboardUpgrade(),
                     new DualMonitorUpgrade(),
@@ -60,6 +64,26 @@ namespace DevTycoon.Engine
                     new EspressoMachine()
                 };
 
+        }
+        public void Reset()
+        {
+            LinesOfCode = 0;
+            TotalLinesOfCode = 0;
+            Team = new List<IEmployee>();
+            HasMechanicalKeyboard = false;
+            HasDualMonitor = false;
+            HasPipeline = false;
+            HasEspressoMachine = false;
+            BonusCodePerClick = 0;
+            IsBugActive = false;
+            BugClicksRemaining = 0;
+            CurrentVersion = 0;
+            Upgrades = new List<IUpgrade>
+                    {
+                        new MechanicalKeyboardUpgrade(),
+                        new DualMonitorUpgrade(),
+                        new Pipeline()
+                    };
         }
         private void NotifyUpgrades()
         {
@@ -95,7 +119,6 @@ namespace DevTycoon.Engine
             foreach (var upgrade in Upgrades)
                 upgrade.OnGameStateChanged(this);
         }
-
 
         public void TriggerBug()
         {
@@ -178,12 +201,17 @@ namespace DevTycoon.Engine
             {
                 LinesOfCode = LinesOfCode,
                 HasMechanicalKeyboard = HasMechanicalKeyboard,
+                HasDualMonitor = HasDualMonitor,
+                HasEspressoMachine = HasEspressoMachine,
+                HasPipeline = HasPipeline,
                 TotalLinesOfCode = TotalLinesOfCode,
                 IsBugActive = IsBugActive,
                 BugClicksRemaining = BugClicksRemaining,
                 CurrentVersion = CurrentVersion,
+                InternCount = Team.Count(e => e.Name == "Intern Developer"),
                 JuniorCount = Team.Count(e => e.Name == "Junior Developer"),
-                SeniorCount = Team.Count(e => e.Name == "Senior Developer")
+                SeniorCount = Team.Count(e => e.Name == "Senior Developer"),
+                SysArchiCount = Team.Count(e => e.Name == "System Architect")
             };
         }
 
@@ -197,11 +225,19 @@ namespace DevTycoon.Engine
             LinesOfCode = Math.Max(0, data.LinesOfCode);
             TotalLinesOfCode = Math.Max(0, data.TotalLinesOfCode);
             HasMechanicalKeyboard = data.HasMechanicalKeyboard;
+            HasDualMonitor = data.HasDualMonitor;
+            HasPipeline = data.HasPipeline;
+            HasEspressoMachine = data.HasEspressoMachine;
             CurrentVersion = Math.Max(0, data.CurrentVersion);
             IsBugActive = data.IsBugActive;
             BugClicksRemaining = data.IsBugActive ? Math.Max(1, data.BugClicksRemaining) : 0;
 
             Team.Clear();
+
+            for (int i = 0; i < Math.Max(0, data.InternCount); i++)
+            {
+                Team.Add(EmployeeFactory.CreateEmployee("intern"));
+            }
 
             for (int i = 0; i < Math.Max(0, data.JuniorCount); i++)
             {
@@ -211,6 +247,11 @@ namespace DevTycoon.Engine
             for (int i = 0; i < Math.Max(0, data.SeniorCount); i++)
             {
                 Team.Add(EmployeeFactory.CreateEmployee("senior"));
+            }
+
+            for (int i = 0; i < Math.Max(0, data.SysArchiCount); i++)
+            {
+                Team.Add(EmployeeFactory.CreateEmployee("sysarchitect"));
             }
         }
 

@@ -14,10 +14,12 @@ using System.Runtime.Serialization.Json;
 
 namespace Proiect
 {
+
     public partial class Form1 : Form
     {
         private GameManager _manager;
         private Dictionary<string, Button> _upgradeButtons;
+        private Dictionary<string, Button> _employeeButtons;
         private List<Label> _floatingTexts = new List<Label>();
         private Random _random = new Random();
         private readonly string _saveFilePath = Path.Combine(
@@ -40,9 +42,22 @@ namespace Proiect
                 { "Espresso Machine", buttonBuyEspressoMachine }
             };
 
+            _employeeButtons = new Dictionary<string, Button>
+                {
+                    { "intern", buttonHireIntern },
+                    { "junior", buttonHireJunior },
+                    { "senior", buttonHireSenior },
+                    { "sysarchitect", buttonHireArchi }
+                };
+
             foreach (var btn in _upgradeButtons.Values)
             {
-                btn.Visible = false;
+                btn.Visible = false; // update vizbilitate butoane perma upgrades
+            }
+
+            foreach (var btn in _employeeButtons.Values)
+            {
+                btn.Visible = false; // update vizibilitate butoane employee
             }
 
 
@@ -58,15 +73,14 @@ namespace Proiect
 
             labelLinesOfCode.Text = $"Lines of Code: {_manager.LinesOfCode.ToString("F1")}\nTeam Size: {_manager.Team.Count}\nCode Per Second: {currentCps.ToString("F1")}";
 
-
-            double juniorCost = _manager.GetNextCost("junior");
-
-                buttonHireJunior.Text = $"Hire Junior Dev (Cost: {Math.Ceiling(juniorCost)})";
-            UpdateButtonVisuals(buttonHireJunior, juniorCost);
-
-            double seniorCost = _manager.GetNextCost("senior");
-            buttonHireSenior.Text = $"Hire Senior Dev (Cost: {Math.Ceiling(seniorCost)})";
-            UpdateButtonVisuals(buttonHireSenior, seniorCost);
+            foreach (var kvp in _employeeButtons)
+            {
+                double cost = _manager.GetNextCost(kvp.Key);
+                string displayName = EmployeeFactory.GetDisplayName(kvp.Key);
+                kvp.Value.Visible = _manager.TotalLinesOfCode >= EmployeeFactory.GetUnlockAt(kvp.Key);
+                kvp.Value.Text = $"Hire {displayName} (Cost: {Math.Ceiling(cost)})";
+                UpdateButtonVisuals(kvp.Value, cost);
+            }
 
             foreach (var upgrade in _manager.Upgrades)
             {
@@ -421,6 +435,32 @@ namespace Proiect
             {
                 MessageBox.Show(ex.Message, "Not Enough Code!",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void buttonHireIntern_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _manager.BuyEmployee("intern");
+                UpdateUI();
+            }
+            catch (NotEnoughCodeException ex)
+            {
+                MessageBox.Show(ex.Message, "Not Enough Code!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void buttonHireArchi_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _manager.BuyEmployee("sysarchitect");
+                UpdateUI();
+            }
+            catch (NotEnoughCodeException ex)
+            {
+                MessageBox.Show(ex.Message, "Not Enough Code!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

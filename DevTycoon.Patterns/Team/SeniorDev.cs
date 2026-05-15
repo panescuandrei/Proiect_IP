@@ -10,6 +10,7 @@ namespace DevTycoon.Patterns
     {
         public string Name => "Senior Developer";
         public double BaseCost => 500.0; 
-        public double CodePerSecond => 15.0; 
+        public double CodePerSecond => 15.0;
+        public double UnlockAt => 100.0;
     }
 }
