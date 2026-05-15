@@ -187,11 +187,7 @@ namespace Proiect
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
-            if (!_manager.IsBugActive && _random.Next(0, 100) < 5)
-            {
-                _manager.TriggerBug();
-            }
-
+            _manager.TryTriggerBug();
             _manager.GeneratePassiveCode();
             UpdateUI();
         }

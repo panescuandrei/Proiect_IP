@@ -21,6 +21,10 @@ namespace DevTycoon.Engine
                 return _instance;
             }
         }
+        // bug triggering
+        private Random _random = new Random();
+        public int BugChance { get; private set; } = 5; // % sansa
+
         public double LinesOfCode { get; private set; }
         public double TotalLinesOfCode { get; private set; }
 
@@ -65,7 +69,7 @@ namespace DevTycoon.Engine
                 };
 
         }
-        public void Reset()
+        public void Reset() // reset function used in unit testing bcs dau share la aceasi instanta la fiecare test si crapa
         {
             LinesOfCode = 0;
             TotalLinesOfCode = 0;
@@ -134,6 +138,14 @@ namespace DevTycoon.Engine
                         upgrade.OnBugTriggered(this);
                 }
             }
+        }
+
+        public void TryTriggerBug()
+        {
+            if (!IsBugActive && _random.Next(0, 100) < BugChance)
+                TriggerBug();
+            // daca se doreste sa scadeti, urcati logica de buggs, puteti face asta usor intr un upgrade, cu
+            // manager.BugChance -= 2 or smth;
         }
 
         public void SquashBug()
