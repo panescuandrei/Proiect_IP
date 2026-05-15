@@ -14,6 +14,8 @@ namespace DevTycoon.Engine
         double Cost { get; }
         bool IsUnlocked { get; }
         bool IsPurchased { get; }
+        string ButtonText { get; }
         void Purchase(GameManager manager);
+        void OnBugTriggered(GameManager manager);
     }
 }

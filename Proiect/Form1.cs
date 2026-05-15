@@ -17,6 +17,7 @@ namespace Proiect
     public partial class Form1 : Form
     {
         private GameManager _manager;
+        private Dictionary<string, Button> _upgradeButtons;
         private List<Label> _floatingTexts = new List<Label>();
         private Random _random = new Random();
         private readonly string _saveFilePath = Path.Combine(
@@ -31,7 +32,21 @@ namespace Proiect
 
             _manager = new GameManager();
 
-           // LoadGame();
+            _upgradeButtons = new Dictionary<string, Button>
+            {
+                { "Mechanical Keyboard", buttonBuyKeyboard },
+                { "Dual Monitor", buttonBuyDualMonitor },  // aici se adauga upgades in dictionar
+                { "CI/CD Pipeline", buttonBuyAutomatedPipeline },
+                { "Espresso Machine", buttonBuyEspressoMachine }
+            };
+
+            foreach (var btn in _upgradeButtons.Values)
+            {
+                btn.Visible = false;
+            }
+
+
+            // LoadGame();
             UpdateUI();
 
             this.FormClosing += Form1_FormClosing;
@@ -45,27 +60,6 @@ namespace Proiect
 
 
             double juniorCost = _manager.GetNextCost("junior");
-            if(_manager.TotalLinesOfCode < 40)
-            {
-                labelTeam.Visible = false;
-                buttonHireJunior.Visible = false;
-
-                labelPermanent.Visible = false;
-                buttonBuyKeyboard.Visible = false;
-            }
-            else
-            {
-                buttonHireJunior.Visible = true;
-                labelTeam.Visible = true;
-
-                labelPermanent.Visible = true;
-                buttonBuyKeyboard.Visible = true;
-            }
-
-            if (_manager.TotalLinesOfCode < 100)
-                buttonHireSenior.Visible = false;
-            else
-                buttonHireSenior.Visible = true;
 
                 buttonHireJunior.Text = $"Hire Junior Dev (Cost: {Math.Ceiling(juniorCost)})";
             UpdateButtonVisuals(buttonHireJunior, juniorCost);
@@ -74,17 +68,24 @@ namespace Proiect
             buttonHireSenior.Text = $"Hire Senior Dev (Cost: {Math.Ceiling(seniorCost)})";
             UpdateButtonVisuals(buttonHireSenior, seniorCost);
 
-            if (_manager.HasMechanicalKeyboard)
+            foreach (var upgrade in _manager.Upgrades)
             {
-                buttonBuyKeyboard.Text = "Mechanical Keyboard (Owned)";
-                buttonBuyKeyboard.BackColor = Color.LightGreen;
-                buttonBuyKeyboard.ForeColor = Color.Black;
-                buttonBuyKeyboard.Enabled = false;
-            }
-            else
-            {
-                buttonBuyKeyboard.Text = "Buy Mechanical Keyboard (Cost: 250)";
-                UpdateButtonVisuals(buttonBuyKeyboard, 250);
+                if (_upgradeButtons.TryGetValue(upgrade.Name, out Button btn))
+                {
+                    btn.Visible = upgrade.IsUnlocked;
+                    btn.Enabled = !upgrade.IsPurchased;
+                    btn.Text = upgrade.ButtonText;
+
+                    if (upgrade.IsPurchased)
+                    {
+                        btn.BackColor = Color.LightGreen;
+                        btn.ForeColor = Color.Black;
+                    }
+                    else
+                    {
+                        UpdateButtonVisuals(btn, upgrade.Cost);
+                    }
+                }
             }
 
             buttonReleaseVersion.Text = $"Release v{_manager.CurrentVersion + 1}.0 (Cost: {_manager.NextVersionCost})";
@@ -383,6 +384,43 @@ namespace Proiect
                     "Load Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
+            }
+        }
+
+        private void buttonBuyDualMonitor_Click(object sender, EventArgs e)
+        {
+            var upgrade = _manager.Upgrades
+                .FirstOrDefault(u => u.Name == "Dual Monitor");
+            try
+            {
+                upgrade?.Purchase(_manager); // TBA try catch block pt validare
+                UpdateUI();
+            }
+            catch (NotEnoughCodeException ex)
+            {
+                MessageBox.Show(ex.Message, "Not Enough Code!",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void buttonBuyEspressoMachine_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("To be implemented w/ button special");
+        }
+
+        private void buttonBuyAutomatedPipeline_Click(object sender, EventArgs e)
+        {
+            var upgrade = _manager.Upgrades
+    .FirstOrDefault(u => u.Name == "CI/CD Pipeline");
+            try
+            {
+                upgrade?.Purchase(_manager); // TBA try catch block pt validare
+                UpdateUI();
+            }
+            catch (NotEnoughCodeException ex)
+            {
+                MessageBox.Show(ex.Message, "Not Enough Code!",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

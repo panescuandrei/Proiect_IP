@@ -13,6 +13,10 @@ namespace DevTycoon.Engine
         public bool IsUnlocked { get; private set; }
         public bool IsPurchased { get; private set; }
 
+        public virtual string ButtonText => IsPurchased ? $"{Name} (Owned)": $"Buy {Name} (Cost: {Cost})";
+
+        public virtual void OnBugTriggered(GameManager manager) { }
+
         // Fiecare upgrade defineste propria conditie de unlock
         protected abstract bool UnlockCondition(GameManager manager);
         // Fiecare upgrade defineste propriu efect

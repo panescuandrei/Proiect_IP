@@ -16,15 +16,23 @@ namespace DevTycoon.Engine
 
         public List<IEmployee> Team { get; private set; }
 
-        public bool HasMechanicalKeyboard { get; internal set; }
+        public bool HasMechanicalKeyboard { get; internal set; } // pt a putea fi setat separat
+        public bool HasDualMonitor { get; internal set; }
+        public bool HasPipeline { get; internal set; }
+        public bool HasEspressoMachine { get; internal set; }
         public bool IsBugActive { get; private set; }
-        public int BugClicksRemaining { get; private set; }
+        public int BugClicksRemaining { get; private set; } // pt a putea fi setat in pipeline
         public int CurrentVersion { get; private set; } = 0;
         public double NextVersionCost => 10000.0 * Math.Pow(2, CurrentVersion); // 10k, dupa 20k, 30k etc.
 
         // Observer Design patter, pt upgrades
         public List<IUpgrade> Upgrades { get; private set; }
         public int BonusCodePerClick { get; set; } = 0;  // pentru DualMonitor etc.
+
+        public void ReduceBugClicks(int amount)
+        {
+            BugClicksRemaining = Math.Max(1, BugClicksRemaining - amount);
+        }
 
         public GameManager()
         {            
@@ -36,9 +44,16 @@ namespace DevTycoon.Engine
             Upgrades = new List<IUpgrade>
                 {
                     new MechanicalKeyboardUpgrade(),
-                    new DualMonitorUpgrade()
+                    new DualMonitorUpgrade(),
+                    new Pipeline(),
+                    new EspressoMachine()
                 };
 
+        }
+        private void NotifyUpgrades()
+        {
+            foreach (var upgrade in Upgrades)
+                upgrade.OnGameStateChanged(this);
         }
 
         public void SpendCode(double amount)
@@ -52,11 +67,13 @@ namespace DevTycoon.Engine
             amount += BonusCodePerClick;  // bonus de la DualMonitor etc.
             LinesOfCode += amount;
             TotalLinesOfCode += amount;
+            NotifyUpgrades();
         }
 
         public void GeneratePassiveCode()
         {
             if (IsBugActive) return;
+            NotifyUpgrades();
 
             foreach (IEmployee employee in Team)
             {
@@ -68,12 +85,20 @@ namespace DevTycoon.Engine
                 upgrade.OnGameStateChanged(this);
         }
 
+
         public void TriggerBug()
         {
             if (!IsBugActive)
             {
                 IsBugActive = true;
-                BugClicksRemaining = 5; 
+                BugClicksRemaining = 5;
+
+                // notifica upgrade-urile sa isi aplice reducerile
+                foreach (var upgrade in Upgrades)
+                {
+                    if (upgrade.IsPurchased)
+                        upgrade.OnBugTriggered(this);
+                }
             }
         }
 

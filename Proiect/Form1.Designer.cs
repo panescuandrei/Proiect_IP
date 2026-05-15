@@ -43,6 +43,9 @@
             this.buttonBug = new System.Windows.Forms.Button();
             this.buttonSaveGame = new System.Windows.Forms.Button();
             this.buttonLoadGame = new System.Windows.Forms.Button();
+            this.buttonBuyDualMonitor = new System.Windows.Forms.Button();
+            this.buttonBuyAutomatedPipeline = new System.Windows.Forms.Button();
+            this.buttonBuyEspressoMachine = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelLinesOfCode
@@ -112,7 +115,7 @@
             this.buttonBuyKeyboard.Font = new System.Drawing.Font("Consolas", 13.74545F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonBuyKeyboard.Location = new System.Drawing.Point(69, 254);
             this.buttonBuyKeyboard.Name = "buttonBuyKeyboard";
-            this.buttonBuyKeyboard.Size = new System.Drawing.Size(297, 62);
+            this.buttonBuyKeyboard.Size = new System.Drawing.Size(310, 62);
             this.buttonBuyKeyboard.TabIndex = 4;
             this.buttonBuyKeyboard.Text = "Buy Mechanical Keyboard\r\n(Cost: 250)";
             this.buttonBuyKeyboard.UseVisualStyleBackColor = false;
@@ -122,7 +125,7 @@
             // 
             this.labelPermanent.AutoSize = true;
             this.labelPermanent.Font = new System.Drawing.Font("Consolas", 15.70909F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelPermanent.Location = new System.Drawing.Point(95, 207);
+            this.labelPermanent.Location = new System.Drawing.Point(110, 207);
             this.labelPermanent.Name = "labelPermanent";
             this.labelPermanent.Size = new System.Drawing.Size(226, 24);
             this.labelPermanent.TabIndex = 5;
@@ -187,6 +190,42 @@
             this.buttonLoadGame.UseVisualStyleBackColor = true;
             this.buttonLoadGame.Click += new System.EventHandler(this.buttonLoadGame_Click_1);
             // 
+            // buttonBuyDualMonitor
+            // 
+            this.buttonBuyDualMonitor.BackColor = System.Drawing.Color.Transparent;
+            this.buttonBuyDualMonitor.Font = new System.Drawing.Font("Consolas", 13.74545F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonBuyDualMonitor.Location = new System.Drawing.Point(69, 340);
+            this.buttonBuyDualMonitor.Name = "buttonBuyDualMonitor";
+            this.buttonBuyDualMonitor.Size = new System.Drawing.Size(310, 62);
+            this.buttonBuyDualMonitor.TabIndex = 11;
+            this.buttonBuyDualMonitor.Text = "Buy Dual Monitor\r\n(Cost: 500)";
+            this.buttonBuyDualMonitor.UseVisualStyleBackColor = false;
+            this.buttonBuyDualMonitor.Click += new System.EventHandler(this.buttonBuyDualMonitor_Click);
+            // 
+            // buttonBuyAutomatedPipeline
+            // 
+            this.buttonBuyAutomatedPipeline.BackColor = System.Drawing.Color.Transparent;
+            this.buttonBuyAutomatedPipeline.Font = new System.Drawing.Font("Consolas", 13.74545F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonBuyAutomatedPipeline.Location = new System.Drawing.Point(69, 425);
+            this.buttonBuyAutomatedPipeline.Name = "buttonBuyAutomatedPipeline";
+            this.buttonBuyAutomatedPipeline.Size = new System.Drawing.Size(310, 62);
+            this.buttonBuyAutomatedPipeline.TabIndex = 12;
+            this.buttonBuyAutomatedPipeline.Text = "Buy Automated CI/CD Pipeline\r\n(Cost: 700)";
+            this.buttonBuyAutomatedPipeline.UseVisualStyleBackColor = false;
+            this.buttonBuyAutomatedPipeline.Click += new System.EventHandler(this.buttonBuyAutomatedPipeline_Click);
+            // 
+            // buttonBuyEspressoMachine
+            // 
+            this.buttonBuyEspressoMachine.BackColor = System.Drawing.Color.Transparent;
+            this.buttonBuyEspressoMachine.Font = new System.Drawing.Font("Consolas", 13.74545F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonBuyEspressoMachine.Location = new System.Drawing.Point(69, 513);
+            this.buttonBuyEspressoMachine.Name = "buttonBuyEspressoMachine";
+            this.buttonBuyEspressoMachine.Size = new System.Drawing.Size(310, 62);
+            this.buttonBuyEspressoMachine.TabIndex = 13;
+            this.buttonBuyEspressoMachine.Text = "Buy Espresso Machine\r\n(Cost: 1000)";
+            this.buttonBuyEspressoMachine.UseVisualStyleBackColor = false;
+            this.buttonBuyEspressoMachine.Click += new System.EventHandler(this.buttonBuyEspressoMachine_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(5F, 12F);
@@ -194,6 +233,9 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(13)))), ((int)(((byte)(6)))));
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(798, 635);
+            this.Controls.Add(this.buttonBuyEspressoMachine);
+            this.Controls.Add(this.buttonBuyAutomatedPipeline);
+            this.Controls.Add(this.buttonBuyDualMonitor);
             this.Controls.Add(this.buttonLoadGame);
             this.Controls.Add(this.buttonSaveGame);
             this.Controls.Add(this.buttonBug);
@@ -231,6 +273,9 @@
         private System.Windows.Forms.Button buttonBug;
         private System.Windows.Forms.Button buttonSaveGame;
         private System.Windows.Forms.Button buttonLoadGame;
+        private System.Windows.Forms.Button buttonBuyDualMonitor;
+        private System.Windows.Forms.Button buttonBuyAutomatedPipeline;
+        private System.Windows.Forms.Button buttonBuyEspressoMachine;
     }
 }
 

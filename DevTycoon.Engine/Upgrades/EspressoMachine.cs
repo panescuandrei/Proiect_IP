@@ -6,21 +6,21 @@ using System.Threading.Tasks;
 
 namespace DevTycoon.Engine.Upgrades
 {
-    public class DualMonitorUpgrade : BaseUpgrade
+    public class EspressoMachine : BaseUpgrade
     {
-        public DualMonitorUpgrade()
+        public EspressoMachine()
         {
-            Name = "Dual Monitor";
-            Cost = 500;
+            Name = "Espresso Machine";
+            Cost = 1000;
         }
 
         protected override bool UnlockCondition(GameManager manager)
-            => manager.TotalLinesOfCode >= 100;
+            => manager.HasPipeline;
 
         protected override void ApplyEffect(GameManager manager)
         {
-            manager.BonusCodePerClick += 1;
-            manager.HasDualMonitor = true;
+            manager.HasEspressoMachine = true;
+            throw new Exception("Apply effect espresso machine - To be implemented");
         }
     }
 }
