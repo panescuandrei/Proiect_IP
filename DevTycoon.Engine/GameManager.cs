@@ -356,5 +356,16 @@ namespace DevTycoon.Engine
             }
         }
 
+        /// <summary>
+        /// Admin method to explicitly set the Lines of Code.
+        /// </summary>
+        public void SetAdminLinesOfCode(double amount)
+        {
+            LinesOfCode = amount;
+            // Keep TotalLinesOfCode equal or higher so we don't re-lock items
+            TotalLinesOfCode = Math.Max(TotalLinesOfCode, amount);
+            NotifyUpgrades();
+        }
+
     }
 }

@@ -539,7 +539,66 @@ namespace Proiect
 
         private void getHelpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Help.ShowHelp(this, "CodeClickerHelp.chm");
+            Help.ShowHelp(this, "CodeClickerHelp.chm");
+        }
+
+        private string ShowInputDialog(string text, string caption, bool isPassword = false)
+        {
+            Form prompt = new Form()
+            {
+                Width = 300,
+                Height = 160,
+                FormBorderStyle = FormBorderStyle.FixedDialog,
+                Text = caption,
+                StartPosition = FormStartPosition.CenterParent,
+                MinimizeBox = false,
+                MaximizeBox = false
+            };
+
+            Label textLabel = new Label() { Left = 20, Top = 20, Text = text, AutoSize = true };
+            TextBox textBox = new TextBox() { Left = 20, Top = 45, Width = 240 };
+
+            if (isPassword)
+            {
+                textBox.PasswordChar = '*';
+            }
+
+            Button confirmation = new Button() { Text = "OK", Left = 160, Width = 100, Top = 80, DialogResult = DialogResult.OK };
+            confirmation.Click += (sender, e) => { prompt.Close(); };
+
+            prompt.Controls.Add(textLabel);
+            prompt.Controls.Add(textBox);
+            prompt.Controls.Add(confirmation);
+            prompt.AcceptButton = confirmation; 
+
+            return prompt.ShowDialog() == DialogResult.OK ? textBox.Text : string.Empty;
+        }
+
+        private void adminModeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string password = ShowInputDialog("Enter Admin Password:", "Admin Access", true);
+
+            if (password == "admin")
+            {
+                
+                string locInput = ShowInputDialog("Enter new Lines of Code amount:", "Admin Console");
+
+                
+                if (double.TryParse(locInput, out double newLoc))
+                {
+                    _manager.SetAdminLinesOfCode(newLoc);
+                    UpdateUI(); 
+                    MessageBox.Show($"Success! Lines of Code set to {newLoc}.", "Admin Mode", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (!string.IsNullOrEmpty(locInput))
+                {
+                    MessageBox.Show("Invalid input. Please enter a valid number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (!string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Incorrect password.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

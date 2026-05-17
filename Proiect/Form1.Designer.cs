@@ -64,7 +64,7 @@
             this.labelLinesOfCode.Font = new System.Drawing.Font("Consolas", 11.78182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelLinesOfCode.Location = new System.Drawing.Point(273, 106);
             this.labelLinesOfCode.Name = "labelLinesOfCode";
-            this.labelLinesOfCode.Size = new System.Drawing.Size(170, 22);
+            this.labelLinesOfCode.Size = new System.Drawing.Size(153, 19);
             this.labelLinesOfCode.TabIndex = 0;
             this.labelLinesOfCode.Text = "Lines of Code: 0";
             this.labelLinesOfCode.Click += new System.EventHandler(this.labelLinesOfCode_Click);
@@ -136,7 +136,7 @@
             this.labelPermanent.Font = new System.Drawing.Font("Consolas", 15.70909F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelPermanent.Location = new System.Drawing.Point(112, 239);
             this.labelPermanent.Name = "labelPermanent";
-            this.labelPermanent.Size = new System.Drawing.Size(246, 28);
+            this.labelPermanent.Size = new System.Drawing.Size(226, 24);
             this.labelPermanent.TabIndex = 5;
             this.labelPermanent.Text = "Permanent Upgrades";
             // 
@@ -147,7 +147,7 @@
             this.labelTeam.Font = new System.Drawing.Font("Consolas", 15.70909F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelTeam.Location = new System.Drawing.Point(533, 243);
             this.labelTeam.Name = "labelTeam";
-            this.labelTeam.Size = new System.Drawing.Size(181, 28);
+            this.labelTeam.Size = new System.Drawing.Size(166, 24);
             this.labelTeam.TabIndex = 6;
             this.labelTeam.Text = "Team Upgrades";
             // 
@@ -260,19 +260,19 @@
             this.saveGameToolStripMenuItem,
             this.loadGameToolStripMenuItem});
             this.gameToolStripMenuItem.Name = "gameToolStripMenuItem";
-            this.gameToolStripMenuItem.Size = new System.Drawing.Size(58, 21);
+            this.gameToolStripMenuItem.Size = new System.Drawing.Size(52, 21);
             this.gameToolStripMenuItem.Text = "Game";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(224, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(201, 6);
             // 
             // saveGameToolStripMenuItem
             // 
             this.saveGameToolStripMenuItem.Name = "saveGameToolStripMenuItem";
             this.saveGameToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveGameToolStripMenuItem.Size = new System.Drawing.Size(227, 24);
+            this.saveGameToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.saveGameToolStripMenuItem.Text = "Save Game";
             this.saveGameToolStripMenuItem.Click += new System.EventHandler(this.saveGameToolStripMenuItem_Click);
             // 
@@ -280,7 +280,7 @@
             // 
             this.loadGameToolStripMenuItem.Name = "loadGameToolStripMenuItem";
             this.loadGameToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.loadGameToolStripMenuItem.Size = new System.Drawing.Size(227, 24);
+            this.loadGameToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.loadGameToolStripMenuItem.Text = "Load Game";
             this.loadGameToolStripMenuItem.Click += new System.EventHandler(this.loadGameToolStripMenuItem_Click);
             // 
@@ -290,14 +290,14 @@
             this.getHelpToolStripMenuItem,
             this.adminModeToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(58, 21);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(52, 21);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // getHelpToolStripMenuItem
             // 
             this.getHelpToolStripMenuItem.Name = "getHelpToolStripMenuItem";
             this.getHelpToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
-            this.getHelpToolStripMenuItem.Size = new System.Drawing.Size(290, 24);
+            this.getHelpToolStripMenuItem.Size = new System.Drawing.Size(260, 22);
             this.getHelpToolStripMenuItem.Text = "Get Help";
             this.getHelpToolStripMenuItem.Click += new System.EventHandler(this.getHelpToolStripMenuItem_Click);
             // 
@@ -306,12 +306,13 @@
             this.adminModeToolStripMenuItem.Name = "adminModeToolStripMenuItem";
             this.adminModeToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.M)));
-            this.adminModeToolStripMenuItem.Size = new System.Drawing.Size(290, 24);
+            this.adminModeToolStripMenuItem.Size = new System.Drawing.Size(260, 22);
             this.adminModeToolStripMenuItem.Text = "Admin Mode";
+            this.adminModeToolStripMenuItem.Click += new System.EventHandler(this.adminModeToolStripMenuItem_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(5F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(13)))), ((int)(((byte)(6)))));
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
