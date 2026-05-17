@@ -143,6 +143,7 @@
             // labelTeam
             // 
             this.labelTeam.AutoSize = true;
+            this.labelTeam.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(13)))), ((int)(((byte)(6)))));
             this.labelTeam.Font = new System.Drawing.Font("Consolas", 15.70909F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelTeam.Location = new System.Drawing.Point(533, 243);
             this.labelTeam.Name = "labelTeam";

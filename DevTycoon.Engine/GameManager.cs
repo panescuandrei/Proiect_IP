@@ -330,6 +330,30 @@ namespace DevTycoon.Engine
             {
                 Team.Add(EmployeeFactory.CreateEmployee("sysarchitect"));
             }
+
+            foreach (var upgrade in Upgrades)
+            {
+                if (upgrade.Name == "Mechanical Keyboard" && HasMechanicalKeyboard)
+                    upgrade.IsPurchased = true;
+
+                else if (upgrade.Name == "Dual Monitor" && HasDualMonitor)
+                    upgrade.IsPurchased = true;
+
+                else if (upgrade.Name == "CI/CD Pipeline" && HasPipeline)
+                    upgrade.IsPurchased = true;
+
+                else if (upgrade.Name == "Espresso Machine" && HasEspressoMachine)
+                    upgrade.IsPurchased = true;
+            }
+
+            NotifyUpgrades();
+
+            BonusCodePerClick = 0;
+            if (HasDualMonitor)
+            {
+                // Pune aici valoarea pe care o dădea Dual Monitor în metoda lui Purchase()
+                BonusCodePerClick += 1;
+            }
         }
 
     }

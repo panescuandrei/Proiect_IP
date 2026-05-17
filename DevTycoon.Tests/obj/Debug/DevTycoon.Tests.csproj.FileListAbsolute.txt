@@ -74,6 +74,8 @@ D:\PERSONAL\IP\PrjIP\DevTycoon.Tests\obj\Debug\DevTycoon.Tests.csproj.CoreCompil
 D:\PERSONAL\IP\PrjIP\DevTycoon.Tests\obj\Debug\DevTycoo.5A5A938E.Up2Date
 D:\PERSONAL\IP\PrjIP\DevTycoon.Tests\obj\Debug\DevTycoon.Tests.dll
 D:\PERSONAL\IP\PrjIP\DevTycoon.Tests\obj\Debug\DevTycoon.Tests.pdb
+C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Tests\obj\Debug\DevTycoon.Tests.csproj.AssemblyReference.cache
+C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Tests\obj\Debug\DevTycoon.Tests.csproj.CoreCompileInputs.cache
 C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
 C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
 C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
@@ -88,8 +90,6 @@ C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Tests\bin\Debug\DevTycoon.E
 C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Tests\bin\Debug\DevTycoon.Patterns.pdb
 C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
 C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
-C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Tests\obj\Debug\DevTycoon.Tests.csproj.AssemblyReference.cache
-C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Tests\obj\Debug\DevTycoon.Tests.csproj.CoreCompileInputs.cache
 C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Tests\obj\Debug\DevTycoo.5A5A938E.Up2Date
 C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Tests\obj\Debug\DevTycoon.Tests.dll
 C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Tests\obj\Debug\DevTycoon.Tests.pdb

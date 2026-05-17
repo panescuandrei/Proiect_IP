@@ -98,7 +98,7 @@ namespace Proiect
                         {
                             btn.Enabled = true;
                             btn.Text = "Brew a coffee";
-                            btn.BackColor = Color.Chocolate; //*****************************************************************************
+                            btn.BackColor = Color.SaddleBrown;
                             btn.ForeColor = Color.White;
                         }
                         else if (_manager.IsEspressoBuffActive)
@@ -106,21 +106,21 @@ namespace Proiect
                             btn.Enabled = false;
                             TimeSpan buffRemaining = TimeSpan.FromMinutes(1) - timeSinceBrew;
                             btn.Text = $"CAFFEINE RUSH! ({buffRemaining.Seconds}s)";
-                            btn.BackColor = Color.Orange; //*****************************************************************************
-                            btn.ForeColor = Color.Black;
+                            btn.BackColor = Color.RosyBrown;
+                            btn.ForeColor = Color.SaddleBrown;
                         }
                         else
                         {
                             btn.Enabled = false;
                             TimeSpan cooldownRemaining = TimeSpan.FromMinutes(3) - timeSinceBrew;
                             btn.Text = $"Emptying the tray... ({cooldownRemaining.Minutes}:{cooldownRemaining.Seconds:D2})";
-                            btn.BackColor = Color.LightGray; //*****************************************************************************
+                            btn.BackColor = Color.LightGray;
                             btn.ForeColor = Color.DimGray;
                         }
                     }
                     else
                     {
-                        btn.Visible = upgrade.IsUnlocked;
+                        btn.Visible = upgrade.IsUnlocked || upgrade.IsPurchased;
                         btn.Enabled = !upgrade.IsPurchased;
                         btn.Text = upgrade.ButtonText;
 
@@ -279,9 +279,10 @@ namespace Proiect
                 return;
             }
 
-
+            int interns = 0;
             int juniors = 0;
             int seniors = 0;
+            int arhitects = 0;
 
 
             foreach (IEmployee employee in _manager.Team)
@@ -294,12 +295,22 @@ namespace Proiect
                 {
                     seniors++;
                 }
+                else if (employee.Name == "Intern Developer")
+                {
+                    interns++;
+                }
+                else if (employee.Name == "System Architect")
+                {
+                    arhitects++;
+                }
             }
 
 
             string rosterMessage = "Current Dev Team:\n\n";
+            rosterMessage += $"- Intern Developers: {interns}\n";
             rosterMessage += $"- Junior Developers: {juniors}\n";
-            rosterMessage += $"- Senior Developers: {seniors}";
+            rosterMessage += $"- Senior Developers: {seniors}\n";
+            rosterMessage += $"- System Architects: {arhitects}";
 
 
             MessageBox.Show(rosterMessage, "Team Roster", MessageBoxButtons.OK, MessageBoxIcon.Information);

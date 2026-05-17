@@ -24,7 +24,7 @@ namespace DevTycoon.Engine
         bool IsUnlocked { get; }
 
         /// <summary>Starea de achiziție.</summary>
-        bool IsPurchased { get; }
+        bool IsPurchased { get; set; }
 
         /// <summary>Textul dinamic afișat pe buton.</summary>
         string ButtonText { get; }

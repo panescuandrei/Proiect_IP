@@ -36,10 +36,10 @@ D:\PERSONAL\IP\PrjIP\DevTycoon.Patterns\obj\Debug\DevTycoon.Patterns.dll
 D:\PERSONAL\IP\PrjIP\DevTycoon.Patterns\obj\Debug\DevTycoon.Patterns.pdb
 C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Patterns\bin\Debug\DevTycoon.Patterns.dll
 C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Patterns\bin\Debug\DevTycoon.Patterns.pdb
-C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Patterns\bin\Debug\DevTycoon.Engine.dll
-C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Patterns\bin\Debug\DevTycoon.Engine.pdb
 C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Patterns\obj\Debug\DevTycoon.Patterns.csproj.AssemblyReference.cache
 C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Patterns\obj\Debug\DevTycoon.Patterns.csproj.CoreCompileInputs.cache
-C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Patterns\obj\Debug\DevTycoo.026B153D.Up2Date
 C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Patterns\obj\Debug\DevTycoon.Patterns.dll
 C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Patterns\obj\Debug\DevTycoon.Patterns.pdb
+C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Patterns\bin\Debug\DevTycoon.Engine.dll
+C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Patterns\bin\Debug\DevTycoon.Engine.pdb
+C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Patterns\obj\Debug\DevTycoo.026B153D.Up2Date

@@ -22,7 +22,7 @@ namespace DevTycoon.Engine
         public bool IsUnlocked { get; private set; }
 
         /// <summary>Indică dacă îmbunătățirea a fost deja cumpărată.</summary>
-        public bool IsPurchased { get; private set; }
+        public bool IsPurchased { get; set; }
 
         /// <summary>Textul afișat pe butonul din interfață, care se schimbă în funcție de starea achiziției.</summary>
         public virtual string ButtonText => IsPurchased ? $"{Name} (Owned)": $"Buy {Name} (Cost: {Cost})";
