@@ -20,7 +20,6 @@ namespace DevTycoon.Engine.Upgrades
         protected override void ApplyEffect(GameManager manager)
         {
             manager.HasEspressoMachine = true;
-            throw new Exception("Apply effect espresso machine - To be implemented");
         }
     }
 }

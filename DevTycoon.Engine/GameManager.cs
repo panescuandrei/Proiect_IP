@@ -39,6 +39,9 @@ namespace DevTycoon.Engine
         /// <summary>Totalul istoric de Linii de Cod produse de la începutul jocului.</summary>
         public double TotalLinesOfCode { get; private set; }
 
+        /// <summary>*****************************************************************************************************************</summary>
+        public bool IsEspressoBuffActive { get; set; } = false; // pentru cafea
+
         /// <summary>Lista angajaților actuali din companie.</summary>
         public List<IEmployee> Team { get; private set; }
 
@@ -110,6 +113,7 @@ namespace DevTycoon.Engine
             HasDualMonitor = false;
             HasPipeline = false;
             HasEspressoMachine = false;
+            IsEspressoBuffActive = false;
             BonusCodePerClick = 0;
             IsBugActive = false;
             BugClicksRemaining = 0;
@@ -118,7 +122,8 @@ namespace DevTycoon.Engine
                     {
                         new MechanicalKeyboardUpgrade(),
                         new DualMonitorUpgrade(),
-                        new Pipeline()
+                        new Pipeline(),
+                        new EspressoMachine()
                     };
         }
         private void NotifyUpgrades()
@@ -139,6 +144,12 @@ namespace DevTycoon.Engine
         {
             double amount = HasMechanicalKeyboard ? 2.0 : 1.0;
             amount += BonusCodePerClick;  // bonus de la DualMonitor etc.
+
+            if (IsEspressoBuffActive)
+            {
+                amount *= 3.0;
+            }
+
             LinesOfCode += amount;
             TotalLinesOfCode += amount;
             NotifyUpgrades();

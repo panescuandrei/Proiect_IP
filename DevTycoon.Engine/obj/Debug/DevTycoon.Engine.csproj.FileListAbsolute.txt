@@ -34,3 +34,12 @@ D:\PERSONAL\IP\PrjIP\DevTycoon.Engine\obj\Debug\DevTycoon.Engine.csproj.CoreComp
 D:\PERSONAL\IP\PrjIP\DevTycoon.Engine\obj\Debug\DevTycoo.FCE2E60F.Up2Date
 D:\PERSONAL\IP\PrjIP\DevTycoon.Engine\obj\Debug\DevTycoon.Engine.dll
 D:\PERSONAL\IP\PrjIP\DevTycoon.Engine\obj\Debug\DevTycoon.Engine.pdb
+C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Engine\bin\Debug\DevTycoon.Engine.dll
+C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Engine\bin\Debug\DevTycoon.Engine.pdb
+C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Engine\bin\Debug\DevTycoon.Patterns.dll
+C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Engine\bin\Debug\DevTycoon.Patterns.pdb
+C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Engine\obj\Debug\DevTycoon.Engine.csproj.AssemblyReference.cache
+C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Engine\obj\Debug\DevTycoon.Engine.csproj.CoreCompileInputs.cache
+C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Engine\obj\Debug\DevTycoo.FCE2E60F.Up2Date
+C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Engine\obj\Debug\DevTycoon.Engine.dll
+C:\Users\Utilizator\Desktop\git\Proiect_IP\DevTycoon.Engine\obj\Debug\DevTycoon.Engine.pdb

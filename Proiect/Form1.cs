@@ -21,6 +21,7 @@ namespace Proiect
         private Dictionary<string, Button> _upgradeButtons;
         private Dictionary<string, Button> _employeeButtons;
         private List<Label> _floatingTexts = new List<Label>();
+        private DateTime _lastBrewTime = DateTime.MinValue;
         private Random _random = new Random();
         private readonly string _saveFilePath = Path.Combine(
     Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
@@ -86,18 +87,52 @@ namespace Proiect
             {
                 if (_upgradeButtons.TryGetValue(upgrade.Name, out Button btn))
                 {
-                    btn.Visible = upgrade.IsUnlocked;
-                    btn.Enabled = !upgrade.IsPurchased;
-                    btn.Text = upgrade.ButtonText;
-
-                    if (upgrade.IsPurchased)
+                    if (upgrade.Name == "Espresso Machine" && upgrade.IsPurchased)
                     {
-                        btn.BackColor = Color.LightGreen;
-                        btn.ForeColor = Color.Black;
+                        // logica speciala pentru butonul de cafea dupa cumpărare
+                        btn.Visible = true;
+                        TimeSpan timeSinceBrew = DateTime.Now - _lastBrewTime;
+                        bool canBrew = timeSinceBrew.TotalMinutes >= 3;
+
+                        if (canBrew)
+                        {
+                            btn.Enabled = true;
+                            btn.Text = "Brew a coffee";
+                            btn.BackColor = Color.Chocolate; //*****************************************************************************
+                            btn.ForeColor = Color.White;
+                        }
+                        else if (_manager.IsEspressoBuffActive)
+                        {
+                            btn.Enabled = false;
+                            TimeSpan buffRemaining = TimeSpan.FromMinutes(1) - timeSinceBrew;
+                            btn.Text = $"CAFFEINE RUSH! ({buffRemaining.Seconds}s)";
+                            btn.BackColor = Color.Orange; //*****************************************************************************
+                            btn.ForeColor = Color.Black;
+                        }
+                        else
+                        {
+                            btn.Enabled = false;
+                            TimeSpan cooldownRemaining = TimeSpan.FromMinutes(3) - timeSinceBrew;
+                            btn.Text = $"Emptying the tray... ({cooldownRemaining.Minutes}:{cooldownRemaining.Seconds:D2})";
+                            btn.BackColor = Color.LightGray; //*****************************************************************************
+                            btn.ForeColor = Color.DimGray;
+                        }
                     }
                     else
                     {
-                        UpdateButtonVisuals(btn, upgrade.Cost);
+                        btn.Visible = upgrade.IsUnlocked;
+                        btn.Enabled = !upgrade.IsPurchased;
+                        btn.Text = upgrade.ButtonText;
+
+                        if (upgrade.IsPurchased)
+                        {
+                            btn.BackColor = Color.LightGreen;
+                            btn.ForeColor = Color.Black;
+                        }
+                        else
+                        {
+                            UpdateButtonVisuals(btn, upgrade.Cost);
+                        }
                     }
                 }
             }
@@ -149,14 +184,13 @@ namespace Proiect
             _manager.WriteCode();
             UpdateUI();
 
-            if (_manager.HasMechanicalKeyboard)
+            int clickValue = _manager.HasMechanicalKeyboard ? 2 : 1;
+            if (_manager.IsEspressoBuffActive)
             {
-                SpawnFloatingText("+2");
+                clickValue *= 3;
             }
-            else
-            {
-                SpawnFloatingText("+1");
-            }
+
+            SpawnFloatingText($"+{clickValue}");
         }
 
         private void buttonHireJunior_Click(object sender, EventArgs e)
@@ -189,6 +223,13 @@ namespace Proiect
         {
             _manager.TryTriggerBug();
             _manager.GeneratePassiveCode();
+
+            // verificare expirare buff de cafea (1 minut)
+            if (_manager.IsEspressoBuffActive && (DateTime.Now - _lastBrewTime).TotalMinutes >= 1)
+            {
+                _manager.IsEspressoBuffActive = false;
+            }
+
             UpdateUI();
         }
 
@@ -368,7 +409,30 @@ namespace Proiect
 
         private void buttonBuyEspressoMachine_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("To be implemented w/ button special");
+            var upgrade = _manager.Upgrades.FirstOrDefault(u => u.Name == "Espresso Machine");
+            if (upgrade == null) return;
+
+            if (!upgrade.IsPurchased)
+            {
+                try
+                {
+                    upgrade.Purchase(_manager);
+                    UpdateUI();
+                }
+                catch (NotEnoughCodeException ex)
+                {
+                    MessageBox.Show(ex.Message, "Not Enough Code!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                if ((DateTime.Now - _lastBrewTime).TotalMinutes >= 3)
+                {
+                    _lastBrewTime = DateTime.Now;
+                    _manager.IsEspressoBuffActive = true;
+                    UpdateUI(); 
+                }
+            }
         }
 
         private void buttonBuyAutomatedPipeline_Click(object sender, EventArgs e)
