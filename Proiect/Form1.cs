@@ -184,7 +184,16 @@ namespace Proiect
             _manager.WriteCode();
             UpdateUI();
 
-            int clickValue = _manager.HasMechanicalKeyboard ? 2 : 1;
+            int clickValue = 1;
+
+            if(_manager.HasMechanicalKeyboard)
+            {
+                clickValue++;
+            }
+            if (_manager.HasDualMonitor)
+            {
+                clickValue += 2;
+            }
             if (_manager.IsEspressoBuffActive)
             {
                 clickValue *= 3;

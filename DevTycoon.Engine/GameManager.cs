@@ -352,7 +352,7 @@ namespace DevTycoon.Engine
             if (HasDualMonitor)
             {
                 // Pune aici valoarea pe care o dădea Dual Monitor în metoda lui Purchase()
-                BonusCodePerClick += 1;
+                BonusCodePerClick += 2;
             }
         }
 
