@@ -53,5 +53,62 @@ namespace DevTycoon.Tests
             GameManager manager = GameManager.Instance;
             manager.BuyEmployee("junior");
         }
+
+
+        [TestMethod]
+        public void BuyEmployee_CostShouldIncreaseAfterPurchase()
+        {
+            GameManager manager = GameManager.Instance;
+            manager.SetAdminLinesOfCode(10000); 
+
+            double initialCost = manager.GetNextCost("junior");
+            manager.BuyEmployee("junior");
+            double newCost = manager.GetNextCost("junior");
+
+            Assert.IsTrue(newCost > initialCost, "Costul trebuie sa creasca dupa prima achizitie.");
+        }
+
+        [TestMethod]
+        public void GeneratePassiveCode_EmptyTeam_ShouldNotIncreaseLOC()
+        {
+            GameManager manager = GameManager.Instance;
+            double initialLoc = manager.LinesOfCode;
+
+            manager.GeneratePassiveCode();
+
+            Assert.AreEqual(initialLoc, manager.LinesOfCode, "Fara echipa, nu ar trebui sa se genereze cod pasiv.");
+        }
+
+
+        [TestMethod]
+        public void GetTotalCPS_WithEmptyTeam_ShouldBeZero()
+        {
+            GameManager manager = GameManager.Instance;
+            Assert.AreEqual(0, manager.GetTotalCPS());
+        }
+
+
+        [TestMethod]
+        public void GetTotalCPS_WithEmployees_ShouldBeGreaterThanZero()
+        {
+            GameManager manager = GameManager.Instance;
+            manager.SetAdminLinesOfCode(1000);
+            manager.BuyEmployee("intern");
+
+            Assert.IsTrue(manager.GetTotalCPS() > 0, "CPS trebuie sa fie mai mare de 0 cand avem angajati.");
+        }
+
+
+        [TestMethod]
+        public void ReleaseVersion_WithEnoughCode_ShouldIncreaseVersionNumber()
+        {
+            GameManager manager = GameManager.Instance;
+            manager.SetAdminLinesOfCode(manager.NextVersionCost + 100);
+            int initialVersion = manager.CurrentVersion;
+
+            manager.ReleaseVersion();
+
+            Assert.AreEqual(initialVersion + 1, manager.CurrentVersion, "Versiunea ar trebui sa creasca cu 1.");
+        }
     }
 }
