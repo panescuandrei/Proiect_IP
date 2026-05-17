@@ -350,53 +350,6 @@ namespace Proiect
             }
         }
 
-       
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonSaveGame_Click_1(object sender, EventArgs e)
-        {
-            try
-            {
-                SaveGame();
-                MessageBox.Show("Game saved successfully!",
-                    "Save Game",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Failed to save game: " + ex.Message,
-                    "Save Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-            }
-        }
-
-        private void buttonLoadGame_Click_1(object sender, EventArgs e)
-        {
-            try
-            {
-                LoadGame();
-                UpdateUI();
-
-                MessageBox.Show("Game loaded successfully!",
-                    "Load Game",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Failed to load game: " + ex.Message,
-                    "Load Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-            }
-        }
-
         private void buttonBuyDualMonitor_Click(object sender, EventArgs e)
         {
             var upgrade = _manager.Upgrades
@@ -458,6 +411,51 @@ namespace Proiect
             {
                 MessageBox.Show(ex.Message, "Not Enough Code!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void saveGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SaveGame();
+                MessageBox.Show("Game saved successfully!",
+                    "Save Game",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to save game: " + ex.Message,
+                    "Save Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
+        }
+
+        private void loadGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LoadGame();
+                UpdateUI();
+
+                MessageBox.Show("Game loaded successfully!",
+                    "Load Game",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to load game: " + ex.Message,
+                    "Load Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
+        }
+
+        private void getHelpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Help.ShowHelp(this, "CodeClickerHelp.chm");
         }
     }
 }

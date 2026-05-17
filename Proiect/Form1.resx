@@ -127,7 +127,7 @@
   <data name="buttonBug.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAMcAAABnCAYAAAC0GVYoAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAtk9JREFUeF6U/fWzHdmVNYrmYkjYcKSy3d1uN5ntNkPZ5XIxM5OqJFWVmJmPpMNi
+        vgAADr4B6kKxwAAAtk9JREFUeF6U/fWzHdmVNYrmYkjYcKSy3d1uN5ntNkPZ5XIxM5OqJFWVmJmPpMNi
         ZihQcRm63f2973sRN96fNl6MmbmPJLvvjbg/OGxL2ntnrrXGmjTmmMVxXeBGGfDfvT7+f9UAf9EO00WB
         F4oCvygKPFkU2K4KXDMFLjQV9vYGeNnWuL/QuL8o8FJRYFfdx+lmAa7bCuM64qFC4WtFgX8vCqyxGjes
         xUdVjYNlhZeMw12FwgNFgZf53XWFI02DCyFh1ni8USj8vCjwm6LA8kLjgrb4MCdM1hGvJo27VIHfFQWe
@@ -908,6 +908,9 @@
         fB2t+v+TJqKRkFZpggAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>284, 17</value>
+  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>25</value>
   </metadata>
