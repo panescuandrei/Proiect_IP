@@ -14,7 +14,6 @@ D:\1Programare\IP\Proiect\Proiect\Proiect\obj\Debug\Proiect.Form1.resources
 D:\1Programare\IP\Proiect\Proiect\Proiect\obj\Debug\Proiect.csproj.Up2Date
 D:\1Programare\IP\Proiect\Proiect\Proiect\bin\Debug\DevTycoon.Patterns.dll
 D:\1Programare\IP\Proiect_IP_Github\Proiect_IP\Proiect\bin\Debug\DevTycoon.Engine.dll
-D:\1Programare\IP\Proiect_IP_Github\Proiect_IP\Proiect\bin\Debug\DevTycoon.Patterns.dll
 D:\1Programare\IP\Proiect_IP_Github\Proiect_IP\Proiect\bin\Debug\DevTycoon.Engine.pdb
 D:\1Programare\IP\Proiect_IP_Github\Proiect_IP\Proiect\bin\Debug\DevTycoon.Patterns.pdb
 D:\1Programare\IP\Proiect_IP_Github\Proiect_IP\Proiect\obj\Debug\Proiect.csproj.AssemblyReference.cache
@@ -76,3 +75,4 @@ D:\PERSONAL\IP\PrjIP\Proiect\obj\Debug\Proiect.csproj.CoreCompileInputs.cache
 D:\PERSONAL\IP\PrjIP\Proiect\obj\Debug\Proiect.csproj.Up2Date
 D:\PERSONAL\IP\PrjIP\Proiect\obj\Debug\Proiect.exe
 D:\PERSONAL\IP\PrjIP\Proiect\obj\Debug\Proiect.pdb
+D:\1Programare\IP\Proiect_IP_Github\Proiect_IP\Proiect\bin\Debug\DevTycoon.Patterns.dll

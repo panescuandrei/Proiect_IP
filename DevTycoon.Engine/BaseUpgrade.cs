@@ -6,23 +6,52 @@ using System.Threading.Tasks;
 
 namespace DevTycoon.Engine
 {
+    /// <summary>
+    /// Clasa de bază abstractă pentru toate îmbunătățirile (upgrades) din joc.
+    /// Oferă funcționalitatea standard pentru deblocare și cumpărare.
+    /// </summary>
     public abstract class BaseUpgrade : IUpgrade
     {
+        /// <summary>Numele îmbunătățirii.</summary>
         public string Name { get; protected set; }
+
+        /// <summary>Costul îmbunătățirii în Linii de Cod.</summary>
         public double Cost { get; protected set; }
+
+        /// <summary>Indică dacă îmbunătățirea a devenit vizibilă/disponibilă pentru jucător.</summary>
         public bool IsUnlocked { get; private set; }
+
+        /// <summary>Indică dacă îmbunătățirea a fost deja cumpărată.</summary>
         public bool IsPurchased { get; private set; }
 
+        /// <summary>Textul afișat pe butonul din interfață, care se schimbă în funcție de starea achiziției.</summary>
         public virtual string ButtonText => IsPurchased ? $"{Name} (Owned)": $"Buy {Name} (Cost: {Cost})";
 
+
+        /// <summary>
+        /// Metodă apelată atunci când apare un bug în joc, permițând upgrade-ului să reacționeze (ex: Pipeline scade click-urile necesare).
+        /// </summary>
+        /// <param name="manager">Instanța curentă a GameManager.</param>
         public virtual void OnBugTriggered(GameManager manager) { }
 
+
         // Fiecare upgrade defineste propria conditie de unlock
+        /// <summary>Definește condiția specifică pentru ca acest upgrade să devină disponibil.</summary>
+        /// <param name="manager">Instanța curentă a GameManager.</param>
+        /// <returns>True dacă se îndeplinește condiția de deblocare, altfel False.</returns>
         protected abstract bool UnlockCondition(GameManager manager);
+
+
         // Fiecare upgrade defineste propriu efect
+        /// <summary>Aplică efectul permanent al acestui upgrade asupra jocului.</summary>
+        /// <param name="manager">Instanța curentă a GameManager.</param>
         protected abstract void ApplyEffect(GameManager manager);
 
         // Observer - se apeleaza la fiecare tick
+        /// <summary>
+        /// Metodă din pattern-ul Observer, apelată la fiecare actualizare a jocului pentru a verifica dacă upgrade-ul trebuie deblocat.
+        /// </summary>
+        /// <param name="gameState">Starea curentă a jocului (GameManager).</param>
         public void OnGameStateChanged(object gameState)
         {
             GameManager manager = (GameManager)gameState;
@@ -30,6 +59,11 @@ namespace DevTycoon.Engine
                 IsUnlocked = true;
         }
 
+        /// <summary>
+        /// Procesează cumpărarea îmbunătățirii: verifică disponibilitatea, scade fondurile și aplică efectul.
+        /// </summary>
+        /// <param name="manager">Instanța curentă a GameManager.</param>
+        /// <exception cref="NotEnoughCodeException">Aruncată dacă jucătorul nu are suficiente Linii de Cod sau upgrade-ul nu e disponibil.</exception>
         public void Purchase(GameManager manager)
         {
             if (!IsUnlocked || IsPurchased)
