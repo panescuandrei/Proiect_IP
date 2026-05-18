@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace DevTycoon.Patterns
 {
+    /// <summary>
+    /// Clasa pentru angajatul de tip Intern (Stagiar). 
+    /// Este cel mai ieftin angajat, disponibil de la începutul jocului, dar cu aport minim de cod.
+    /// </summary>
     public class InternDev : IEmployee
     {
         public string Name => "Intern Developer";

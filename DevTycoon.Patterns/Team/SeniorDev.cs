@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace DevTycoon.Patterns
 {
+    /// <summary>
+    /// Clasa pentru angajatul de tip Senior. 
+    /// Un veteran scump, dar care aduce un spor masiv de viteză startup-ului tău.
+    /// </summary>
     public class SeniorDev : IEmployee
     {
         public string Name => "Senior Developer";
