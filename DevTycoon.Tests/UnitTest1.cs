@@ -98,6 +98,50 @@ namespace DevTycoon.Tests
             Assert.IsTrue(manager.GetTotalCPS() > 0, "CPS trebuie sa fie mai mare de 0 cand avem angajati.");
         }
 
+        [TestMethod]
+        public void PurchaseUpgrade_WithEnoughCode_ShouldSetIsPurchasedToTrue()
+        {
+            GameManager manager = GameManager.Instance;
+            manager.SetAdminLinesOfCode(5000); 
+            var upgrade = manager.Upgrades.Find(u => u.Name == "Mechanical Keyboard");
+
+          
+            upgrade.Purchase(manager);
+
+            Assert.IsTrue(upgrade.IsPurchased, "Upgrade-ul ar trebui marcat ca achizitionat.");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NotEnoughCodeException))]
+        public void PurchaseUpgrade_WithoutEnoughCode_ShouldThrowException()
+        {
+            GameManager manager = GameManager.Instance;
+            
+            var upgrade = manager.Upgrades.Find(u => u.Name == "Mechanical Keyboard");
+
+            upgrade.Purchase(manager);
+        }
+
+        [TestMethod]
+        public void ReleaseVersion_WithEnoughCode_ShouldDeductCost()
+        {
+            GameManager manager = GameManager.Instance;
+            double cost = manager.NextVersionCost;
+            manager.SetAdminLinesOfCode(cost + 50);
+
+            manager.ReleaseVersion();
+
+            Assert.AreEqual(50, manager.LinesOfCode, "Costul versiunii trebuie scazut din total.");
+        }
+
+
+        [TestMethod]
+        [ExpectedException(typeof(NotEnoughCodeException))]
+        public void ReleaseVersion_WithoutEnoughCode_ShouldThrowException()
+        {
+            GameManager manager = GameManager.Instance;
+            manager.ReleaseVersion(); // incearca sa lanseze pe saracie
+        }
 
         [TestMethod]
         public void ReleaseVersion_WithEnoughCode_ShouldIncreaseVersionNumber()
@@ -110,5 +154,104 @@ namespace DevTycoon.Tests
 
             Assert.AreEqual(initialVersion + 1, manager.CurrentVersion, "Versiunea ar trebui sa creasca cu 1.");
         }
+
+        [TestMethod]
+        public void SquashBug_ShouldDecreaseClicksRemaining()
+        {
+            GameManager manager = GameManager.Instance;
+
+            
+            typeof(GameManager).GetProperty("IsBugActive").SetValue(manager, true);
+            typeof(GameManager).GetProperty("BugClicksRemaining").SetValue(manager, 5);
+
+            manager.SquashBug();
+
+            Assert.AreEqual(4, manager.BugClicksRemaining, "Clickurile necesare pentru bug ar trebui sa scada.");
+        }
+
+        [TestMethod]
+        public void SquashBug_ShouldDeactivateBug_WhenClicksReachZero()
+        {
+            GameManager manager = GameManager.Instance;
+
+            
+            typeof(GameManager).GetProperty("IsBugActive").SetValue(manager, true);
+            typeof(GameManager).GetProperty("BugClicksRemaining").SetValue(manager, 1);
+
+            manager.SquashBug();
+
+            Assert.IsFalse(manager.IsBugActive, "Bug-ul ar trebui sa se dezactiveze cand ajunge la 0 clickuri.");
+            Assert.AreEqual(0, manager.BugClicksRemaining);
+        }
+
+        [TestMethod]
+        public void SetAdminLinesOfCode_ShouldExactMatch()
+        {
+            GameManager manager = GameManager.Instance;
+            manager.SetAdminLinesOfCode(1337);
+
+            Assert.AreEqual(1337, manager.LinesOfCode);
+        }
+
+        [TestMethod]
+        public void SetAdminLinesOfCode_ShouldIncreaseTotalLinesOfCode()
+        {
+            GameManager manager = GameManager.Instance;
+            manager.SetAdminLinesOfCode(5000);
+
+            Assert.IsTrue(manager.TotalLinesOfCode >= 5000, "TotalLinesOfCode trebuie sa tina pasul cu admin mode pentru a nu strica unlock-urile.");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))] 
+        public void BuyEmployee_WithInvalidEmployeeId_ShouldThrowException()
+        {
+            GameManager manager = GameManager.Instance;
+            manager.SetAdminLinesOfCode(999999);
+
+            
+            manager.BuyEmployee("hacker_suprem");
+        }
+
+        [TestMethod]
+        public void SetAdminLinesOfCode_ToLowerValue_ShouldNotDecreaseTotalLOC()
+        {
+            GameManager manager = GameManager.Instance;
+            manager.SetAdminLinesOfCode(1000); 
+            manager.SetAdminLinesOfCode(500);
+
+            Assert.AreEqual(500, manager.LinesOfCode, "Balanța curentă trebuie să fie forțată la 500.");
+            Assert.AreEqual(1000, manager.TotalLinesOfCode, "TotalLinesOfCode a rămas la recordul maxim istoric (1000).");
+        }
+
+        [TestMethod]
+        public void BuyEmployee_ShouldDecreaseLOC_ButKeepTotalLOC()
+        {
+            GameManager manager = GameManager.Instance;
+            manager.SetAdminLinesOfCode(500); //seteaza LOC si Total LOC la 500
+            double initialTotal = manager.TotalLinesOfCode;
+
+            manager.BuyEmployee("intern");
+
+            Assert.IsTrue(manager.LinesOfCode < 500, "Codul disponibil (balanța) ar trebui să scadă după achiziție.");
+            Assert.AreEqual(initialTotal, manager.TotalLinesOfCode, "TotalLinesOfCode nu trebuie să scadă niciodată la achiziții.");
+        }
+
+        [TestMethod]
+        public void BuyMultipleEmployees_ShouldMultiplyTotalCPS()
+        {
+            GameManager manager = GameManager.Instance;
+            manager.SetAdminLinesOfCode(10000);
+
+            manager.BuyEmployee("intern");
+            double cpsOneIntern = manager.GetTotalCPS();
+
+            manager.BuyEmployee("intern");
+            double cpsTwoInterns = manager.GetTotalCPS();
+
+            Assert.IsTrue(cpsTwoInterns > cpsOneIntern, "CPS-ul total trebuie să fie mai mare când avem 2 interni.");
+            Assert.AreEqual(cpsOneIntern * 2, cpsTwoInterns, 0.01, "2 interni ar trebui să producă exact dublu față de 1 intern.");
+        }
+
     }
 }
