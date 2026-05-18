@@ -1,4 +1,25 @@
-﻿using DevTycoon.Engine.Upgrades;
+﻿/**************************************************************************
+ *                                                                        *
+ *  File:        GameManager.cs                                           *
+ *  Copyright:   (c) 2026 - Ciurilă Maria-Adriana, Frandeș Eugen-Codrin,  *
+ *  Pănescu Andrei, Scutariu Darius-Ioan                                  *
+ *  E-mail:      maria-adriana.ciurila@student.tuiasi.ro,                 *
+ *               eugen-codrin.frandes@student.tuiasi.ro,                  *
+ *               andrei.panescu@student.tuiasi.ro,                        *
+ *               darius-ioan.scutariu@student.tuiasi.ro                   *
+ *  Description: Clasa principală a jocului (Singleton) care gestionează  *
+ *  starea curentă, resursele, echipa, erorile (bugs) și sistemul de      *
+ *  salvări.                                                              *
+ *                                                                        *
+ *  This program is free software; you can redistribute it and/or modify  *
+ *  it under the terms of the GNU General Public License as published by  *
+ *  the Free Software Foundation. This program is distributed in the      *
+ *  hope that it will be useful, but WITHOUT ANY WARRANTY; without even   *
+ *  the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR   *
+ *  PURPOSE. See the GNU General Public License for more details.         *
+ *                                                                        *
+ **************************************************************************/
+using DevTycoon.Engine.Upgrades;
 using DevTycoon.Patterns;
 using System;
 using System.Collections.Generic;
@@ -357,12 +378,12 @@ namespace DevTycoon.Engine
         }
 
         /// <summary>
-        /// Admin method to explicitly set the Lines of Code.
+        /// Metodă Admin pentru a putea seta liber Liniile de Cod.
         /// </summary>
         public void SetAdminLinesOfCode(double amount)
         {
             LinesOfCode = amount;
-            // Keep TotalLinesOfCode equal or higher so we don't re-lock items
+            
             TotalLinesOfCode = Math.Max(TotalLinesOfCode, amount);
             NotifyUpgrades();
         }

@@ -1,4 +1,25 @@
-﻿using System;
+﻿/**************************************************************************
+ *                                                                        *
+ *  File:        BaseUpgrade.cs                                           *
+ *  Copyright:   (c) 2026 - Ciurilă Maria-Adriana, Frandeș Eugen-Codrin,  *
+ *  Pănescu Andrei, Scutariu Darius-Ioan                                  *
+ *  E-mail:      maria-adriana.ciurila@student.tuiasi.ro,                 *
+ *               eugen-codrin.frandes@student.tuiasi.ro,                  *
+ *               andrei.panescu@student.tuiasi.ro,                        *
+ *               darius-ioan.scutariu@student.tuiasi.ro                   *
+ *  Description: Clasă de bază abstractă care oferă funcționalitatea      *
+ *  comună (deblocare, cumpărare, aplicare efect) pentru toate            *
+ *  îmbunătățirile din joc.                                               *
+ *                                                                        *
+ *  This program is free software; you can redistribute it and/or modify  *
+ *  it under the terms of the GNU General Public License as published by  *
+ *  the Free Software Foundation. This program is distributed in the      *
+ *  hope that it will be useful, but WITHOUT ANY WARRANTY; without even   *
+ *  the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR   *
+ *  PURPOSE. See the GNU General Public License for more details.         *
+ *                                                                        *
+ **************************************************************************/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

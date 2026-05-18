@@ -1,4 +1,24 @@
-﻿using DevTycoon.Engine;
+﻿/**************************************************************************
+ *                                                                        *
+ *  File:        Form1.cs                                                 *
+ *  Copyright:   (c) 2026 - Ciurilă Maria-Adriana, Frandeș Eugen-Codrin,  *
+ *  Pănescu Andrei, Scutariu Darius-Ioan                                  *
+ *  E-mail:      maria-adriana.ciurila@student.tuiasi.ro,                 *
+ *               eugen-codrin.frandes@student.tuiasi.ro,                  *
+ *               andrei.panescu@student.tuiasi.ro,                        *
+ *               darius-ioan.scutariu@student.tuiasi.ro                   *
+ *  Description: Gestionează interfața grafică a aplicației (WinForms) și *
+ *  interacțiunea utilizatorului cu instanța de GameManager.              *
+ *                                                                        *
+ *  This program is free software; you can redistribute it and/or modify  *
+ *  it under the terms of the GNU General Public License as published by  *
+ *  the Free Software Foundation. This program is distributed in the      *
+ *  hope that it will be useful, but WITHOUT ANY WARRANTY; without even   *
+ *  the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR   *
+ *  PURPOSE. See the GNU General Public License for more details.         *
+ *                                                                        *
+ **************************************************************************/
+using DevTycoon.Engine;
 using DevTycoon.Patterns;
 using System;
 using System.Collections.Generic;
@@ -68,6 +88,10 @@ namespace Proiect
             this.FormClosing += Form1_FormClosing;
         }
 
+        /// <summary>
+        /// Sincronizează interfața grafică cu starea curentă a jocului.
+        /// Actualizează etichetele de text, vizibilitatea și culorile butoanelor în funcție de Liniile de Cod disponibile.
+        /// </summary>
         private void UpdateUI()
         {
             double currentCps = _manager.GetTotalCPS();
@@ -242,6 +266,12 @@ namespace Proiect
             UpdateUI();
         }
 
+
+        /// <summary>
+        /// Generează un text animat care plutește deasupra butonului principal 
+        /// pentru a oferi feedback vizual jucătorului la fiecare click (ex: "+1", "+3").
+        /// </summary>
+        /// <param name="text">Valoarea sau mesajul care va fi afișat pe ecran.</param>
         private void SpawnFloatingText(string text)
         {
             Label floatLabel = new Label();
@@ -542,6 +572,14 @@ namespace Proiect
             Help.ShowHelp(this, "CodeClickerHelp.chm");
         }
 
+        /// <summary>
+        /// Creează dinamic o fereastră de dialog pentru a prelua input de la utilizator.
+        /// Folosită în special pentru autentificarea în modul de administrator.
+        /// </summary>
+        /// <param name="text">Mesajul descriptiv afișat deasupra câmpului de text.</param>
+        /// <param name="caption">Titlul ferestrei de dialog.</param>
+        /// <param name="isPassword">Dacă este true, ascunde caracterele introduse sub formă de '*'.</param>
+        /// <returns>Textul introdus de utilizator sau un string gol dacă acțiunea a fost anulată.</returns>
         private string ShowInputDialog(string text, string caption, bool isPassword = false)
         {
             Form prompt = new Form()
